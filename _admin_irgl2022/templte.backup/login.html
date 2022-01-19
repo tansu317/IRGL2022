@@ -23,18 +23,19 @@
                 <div class="title">Login Admin</div>
 
                 <!-- <div class="alert alert-danger">Pesan error disini</div>-->
+                <form action="log_end.php" method="POST">
+                    <input type="text" name="email" placeholder="NRP" id="email" class="form-control" name="nrp"/><br/>
 
-                <input type="text" name="email" placeholder="xxxxxx@john.petra.ac.id" id="email" class="form-control" /><br/>
-
-                <input type="password" name="katasandi" placeholder="Masukan Katasandi" id="email" class="form-control" /><br/>
-
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="tetap-masuk">
-                    <label class="custom-control-label" for="tetap-masuk">Tetap masuk di browser ini</label>
-                </div><br/>
-
-                <button class="btn btn-primary btn-block btn-lg" name="masuk">Masuk</button>
-
+                    <input type="password" name="katasandi" placeholder="Masukan Katasandi" id="email" class="form-control" name="pass"/><br/>
+    
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="tetap-masuk">
+                        <label class="custom-control-label" for="tetap-masuk">Tetap masuk di browser ini</label>
+                    </div><br/>
+    
+                    <button class="btn btn-primary btn-block btn-lg" name="masuk">Masuk</button>
+                </form>
+               
                 <div class="footer-login">
                     Tidak dapat masuk? <a href="#">Lupa Katasandi</a>
                 </div>
