@@ -3,7 +3,7 @@
 require_once "./includes/connection.php";
 
 // Hapus token login
-$sql = "UPDATE `admin` SET hash_login = :delete WHERE hash_login = :hash";
+$sql = "UPDATE `2022_admin` SET login_cookie = :delete WHERE login_cookie = :hash";
 $update_login = $pdo->prepare($sql);
 $update_login->bindValue(':delete', trim(' '));
 $update_login->bindParam(':hash', $cookie_login);
