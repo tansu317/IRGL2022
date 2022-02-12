@@ -22,8 +22,18 @@ try {
 
 session_start();
 
-// Default token -> 
-$token_reCaptcha = '';
+// Default reCaptcha -> buat test
+// $reCaptcha = [
+//     'site_key' => '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
+//     'secret_key' => '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
+// ];
+
+$reCaptcha = [
+    'site_key' => '6Lc8CiIeAAAAAE89OkUKBhj9HBLcSGmVVpsk4Ou8',
+    'secret_key' => '6Lc8CiIeAAAAAJH6UeuU8FUUU2_oU-jnTig-pXFz'
+];
+
+
 $pathURL = '/_admin_irgl2022/';
 $cookie_login = isset($_COOKIE['login']) ? $_COOKIE['login'] : '';
 
