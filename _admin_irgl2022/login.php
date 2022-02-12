@@ -80,7 +80,7 @@ if (isset($_POST['masuk']))
         }
         else 
         {
-            $error = 'Login Gagal! NRP atau Katasandi tidak terdaftar.';
+            $error = 'Login Gagal! NRP atau Katasandi tidak ditemukan.';
         }
     }
 }
