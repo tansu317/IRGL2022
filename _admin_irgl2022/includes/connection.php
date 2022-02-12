@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set('Asia/Jakarta');
+
 $host = '127.0.0.1';
 $db = 'irgl_2022';
 $charset = 'utf8mb4';
