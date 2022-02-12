@@ -12,8 +12,8 @@ body {
     background: #D0D7DD;
     margin: 0;
     padding: 0;
-    font-size: 16px;
-    color: #222
+    font-size: 15px;
+    color: #555
 }
 
 a {
@@ -74,7 +74,7 @@ a:hover {
 .navbar.navbar-custom {
     background-color: #435441;
     border-color: #ffffff;
-    padding: 8px 40px;
+    padding: 5px 40px;
     box-shadow: 0 1px 8px 0 rgb(0 0 0 / 40%);
 }
 
@@ -120,7 +120,7 @@ a:hover {
 
 .clear-header {
     clear: both;
-    margin: 3em
+    margin: 4.75em
 }
 
 .index-irgl {
@@ -223,11 +223,13 @@ a:hover {
 .login-form .box-login .form-control {
     border-color: transparent;
     border-bottom: 1px solid #ddd;
-    padding: 25px 0
+    padding: 25px 0;
+    border-radius: 0;
 }
 
 .login-form .box-login .form-control:focus {
     box-shadow: none;
+    border-bottom: 2px solid #92a494;
 }
 
 .login-form .box-login .title {
@@ -263,4 +265,56 @@ a:hover {
     padding: 20px;
     padding-bottom: 0;
     text-align: center;
+}
+
+.error-page {
+    border-top:#435441 10px solid
+}
+
+.box-error-page {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -40%);
+    padding: 10px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.box-error-page .title {
+    font-size: 80px;
+    font-family: BlackChancery;
+    color: #435441
+}
+
+.box-error-page p {
+    font-size: 18px;
+    color:#7f92a0
+}
+
+@media(max-width: 540px) {
+    .box-error-page .title {
+        font-size: 50px;
+    }
+
+    .box-error-page p {
+        font-size: 16px;
+    }
+}
+
+.search-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border: 1px solid #44664d
+}
+
+.info-login-header {
+    background: #fffade;
+    padding: 12px 0;
+    margin-bottom: 3em;
 }
