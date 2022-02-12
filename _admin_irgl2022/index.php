@@ -4,14 +4,7 @@ require_once "./includes/connection.php";
 isUserLogin();
 
 $title = 'Selamat datang di halaman Admin IRGL 2022';
-require_once './includes/header.php';
-
-$sql = 'SELECT name FROM `admin` WHERE hash_login=:hash';
-$fetch_admin = $pdo->prepare($sql);
-$fetch_admin->bindParam(':hash', $cookie_login);
-$fetch_admin->execute();
-$fetch_admin = $fetch_admin->fetch(PDO::FETCH_OBJ);
-$nama_admin = htmlspecialchars($fetch_admin->name); ?>
+require_once './includes/header.php'; ?>
 
 <!-- Index IRGL -->
 <div class="index-irgl">
