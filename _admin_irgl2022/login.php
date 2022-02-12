@@ -47,8 +47,8 @@ if (isset($_POST['masuk']))
 
 
         // Uji Coba login
-//         if ($nrp == 'c14210004' && $pass == 'cobapass')
-//             $imap = true;
+        // if ($nrp == 'c14210004' && $pass == 'cobapass')
+        //     $imap = true;
 
         if ($imap)
         {
