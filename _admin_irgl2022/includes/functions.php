@@ -8,7 +8,7 @@ function isUserLogin()
 
     if (!empty($GLOBALS['cookie_login'])) 
     {
-        $stmt = 'SELECT hash_login FROM `admin` WHERE hash_login = :hash';
+        $stmt = 'SELECT login_cookie FROM `2022_admin` WHERE login_cookie = :hash';
         $check_login = $pdo->prepare($stmt);
         $check_login->bindParam(':hash', $GLOBALS['cookie_login']);
         $check_login->execute();
@@ -33,7 +33,7 @@ function isAlreadyLogin()
 
     if (!empty($GLOBALS['cookie_login'])) 
     {
-        $stmt = 'SELECT hash_login FROM `admin` WHERE hash_login = :hash';
+        $stmt = 'SELECT login_cookie FROM `2022_admin` WHERE login_cookie = :hash';
         $check_login = $pdo->prepare($stmt);
         $check_login->bindParam(':hash', $GLOBALS['cookie_login']);
         $check_login->execute();
