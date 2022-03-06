@@ -1,5 +1,25 @@
 <?php
 
+function errorAccessIP($error = '', $page = '')
+{
+    $pdo = $GLOBALS['pdo'];
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $ua = $_SERVER['HTTP_USER_AGENT'];
+    $token = '';
+    $get_json = 'http://ipinfo.io/'.$ip.'?token='.$token;
+    $get_json = trim(@file_get_contents($get_json));
+    $timestamp = date("Y-m-d H:i:s");
+
+    if (mb_strlen($page) > 150) 
+        $page = '';
+
+    $insert_ip = $pdo->prepare("INSERT INTO `2022_error_input` SET ip = '$ip', ua = '$ua', json = :json, time = '$timestamp', page = :page, error = :error");
+    $insert_ip->bindValue(':json', $get_json);
+    $insert_ip->bindValue(':page', $page);
+    $insert_ip->bindValue(':error', $error);
+    $insert_ip->execute();
+}
+
 function isUserLogin() 
 {
     $redir = '';
