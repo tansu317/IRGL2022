@@ -5,7 +5,7 @@ function errorAccessIP($error = '', $page = '')
     $pdo = $GLOBALS['pdo'];
     $ip = $_SERVER['REMOTE_ADDR'];
     $ua = $_SERVER['HTTP_USER_AGENT'];
-    $token = '';
+    $token = '4098c8c7ca55e9';
     $get_json = 'http://ipinfo.io/'.$ip.'?token='.$token;
     $get_json = trim(@file_get_contents($get_json));
     $timestamp = date("Y-m-d H:i:s");
