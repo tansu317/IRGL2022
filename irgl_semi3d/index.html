@@ -1,0 +1,247 @@
+<html lang="en">
+    <head>
+        <title>Document</title>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+        <script type="module" src="index.js"></script>
+        <script src="./js/main.js"></script>
+
+        <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="./assets/styles.css" />
+        <link rel="stylesheet" href="./assets/styles-darkmode.css" />
+        <link rel="stylesheet" href="./assets/responsive.css" />
+    </head>
+
+    <body style="width: 100vw; height: 100vh; overflow: hidden">
+
+        <div id="irgl-section">
+            <canvas class="webgl" data-engine="three.js r136" width="1920" height="893" style="touch-action: none; user-select: none;"></canvas>
+            <div class="dimmer"></div>
+
+            <div class="index-section">
+                <div class="title-description">
+                    ODYSSEY OF THE SACRED EXCALIBUR
+                </div>
+
+                <div class="menu-cont-wrapper">
+                    <div class="menu-container">
+                        <div class="login">
+                            <a onclick="goToPage('.index-section', 'login')" id="login">LOGIN</a>
+                        </div>
+                        <div class="register">
+                            <a>REGISTER</a>
+                        </div>
+                        <div class="settings">
+                            <a href="#" data-toggle="modal" data-target="#settingsModal" data-hide=".index-section">SETTINGS</a>
+                        </div>
+                        <div class="about">
+                            <a id="about">ABOUT US</a>
+                        </div>
+                        <div class="timeline">
+                            <a id="timeline">TIMELINE</a>
+                        </div>
+                        <div class="contact">
+                            <a href="#" data-toggle="modal" data-target="#contactUsModal" data-hide=".index-section">CONTACT US</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer">
+                    IRGL 2022 Web Team
+                </div>
+            </div>
+
+            <div class="container-show">
+                <div class="title">
+                    LOGIN
+                </div>
+
+                <div class="content-section">
+                    <div class="login-section">
+
+                        <label for="team_name"><b>Team Name</b></label>
+                        <input type="text" id="team_name" placeholder="Team Name"><br>
+
+                        <label for="password"><b>Password</b></label>
+                        <input type="password" id="password" placeholder="Password"><br>
+
+                        <button name="">Login Now</button>
+                    </div>
+
+                    <a onclick="backToMain()" class="back"><i class="fa fa-arrow-left"></i> Back To Main Menu</a>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal" data-display="loader">
+            <div class="content">
+                Press anywhere to continue
+            </div>
+        </div>
+
+
+        <div class="modal" id="settingsModal">
+            <div class="box-center">
+                <div class="centered">
+                    <div class="box-left">
+                        <img src="./excalibur.png" alt="excalibur" class="object1" />
+                        <img src="./excalibur.png" alt="excalibur" class="object2" />
+                    </div>
+                    <div class="box-right settings">
+                        <div class="title">
+                            <h2>Settings</h2>
+                        </div>
+
+                        <div class="content">
+                            <div class="box-layout">
+                                <div class="icon rotateFull">
+                                    <i class="faicon fas fa-sun" id="darkModeClick"></i>
+                                </div>
+                                <div class="set">
+                                    Dark Mode<br/>
+                                    <div class="status">
+                                        <select class="select-custom" id="darkModeSelect">
+                                            <option selected>OFF</option>
+                                            <option>ON</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="box-layout">
+                                <div class="icon rotateV">
+                                    <i class="faicon fas fa-volume" id="volumeClick"></i>
+                                </div>
+                                <div class="set">
+                                    Volume<br/>
+                                    <div class="status">
+                                        <select class="select-custom" id="volumeSelect">
+                                            <option value="0">Low</option>
+                                            <option value="1" selected>Default</option>
+                                            <option value="2">High</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="box-layout">
+                                <div class="icon rotateC">
+                                    <i class="faicon fas fa-music" id="musicSoundClick"></i>
+                                </div>
+                                <div class="set">
+                                    Music &  Sound<br/>
+                                    <div class="status">
+                                        <select id="musicSoundSelect" class="select-custom">
+                                            <option>OFF</option>
+                                            <option selected>ON</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="save-section">
+                            <button data-toggle="modal" data-target=".index-section" data-hide="#settingsModal">&laquo; Back to main menu</button> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="modal"id="contactUsModal">
+            <div class="box-center">
+                <div class="centered">
+                    <div class="box-left">
+
+                        <div class="contact_us">
+                            <img src="./castle.png" alt="Castle" width="380" />
+                        </div>
+                    </div>
+                    
+                    <div class="box-right settings">
+                        <div class="title">
+                            <h2>Contact Us</h2>
+                        </div>
+
+                        <div class="content">
+                            <div class="box-layout">
+                                <div class="icon rotate">
+                                    <i class="faicon fab fa-instagram" id="darkModeClick"></i>
+                                </div>
+                                <div class="set">
+                                    Instagram
+                                    <a href="//www.instagram.com/irglpetra2022" target="_blank" class="status">irglpetra2022</a>
+                                </div>
+                            </div>
+
+                            <div class="box-layout">
+                                <div class="icon rotate">
+                                    <i class="faicon fab fa-line"></i>
+                                </div>
+                                <div class="set">
+                                    Line
+                                    <a href="https://line.me/R/ti/p/@462mqnpg" target="_blank"  class="status">@462mqnpg</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="save-section">
+                            <button data-toggle="modal" data-target=".index-section" data-hide="#contactUsModal">&laquo; Back to main menu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function goToPage(section, show)
+            {
+                $(section).fadeOut();
+
+                setTimeout(() =>
+                {
+                    $('.container-show').fadeIn();
+                    $(show).fadeIn();
+                }, 500);
+            }
+
+            function backToMain()
+            {
+                $('.container-show').fadeOut();
+
+                setTimeout(() =>
+                {
+                    $('.index-section').fadeIn();
+                }, 500);
+            }
+
+            function changeStyleWebGl()
+            {
+                $('.webgl').css(
+                    {'width': $(window).width(),
+                    'height': $(window).height()
+                    }
+                );
+            }
+
+            $(function() 
+            {
+                let sword;
+                let moveMouse = true;
+                
+                window.init3D();
+                window.animate3D();
+                changeStyleWebGl();
+            });
+        </script>
+    </body>
+</html>
