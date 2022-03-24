@@ -1,64 +1,54 @@
-$(function()
-{
+$(function () {
     let playSound = false;
     let darkMode = false;
-    let volume = 0.7;
+    let volume = 0.5;
 
     const sound = new Howl({
         src: ['./sound.mp3'],
         loop: true,
-        volume: volume,
-        onplay: function()
-        {
+        volume: 0,
+        onplay: function () {
             console.log("Sound is Playing");
         },
-        onpause: function()
-        {
+        onpause: function () {
             console.log("Howler not Playing");
         }
     });
 
-    $('[data-display=loader]').click(function()
-    {
+    $('[data-display=loader]').click(function () {
         $(this).fadeOut(800);
         $("#irgl-section").fadeIn(1000);
 
-        if (!sound.playing())
-        {
+        if (!sound.playing()) {
             playSound = true;
-            sound.fade(0, 1, 2000);
             sound.play();
-            sound.volume(0.7);
+            sound.fade(0, 0.5, 2000);
+            // sound.volume(0.7);
         }
     });
 
-    $('[data-toggle=modal]').click(function(e)
-    {
+    $('[data-toggle=modal]').click(function (e) {
         e.preventDefault();
         const getAttr = $(this).attr("data-target");
         const dataHide = $(this).attr("data-hide");
 
-        if (getAttr && dataHide)
-        {
+
+        if (getAttr && dataHide) {
             const modalView = $(getAttr);
 
-            if (dataHide && modalView) 
-            {
+            if (dataHide && modalView) {
                 $(dataHide).fadeOut();
 
-                setTimeout(() =>
-                {
+                setTimeout(() => {
                     modalView.fadeIn();
                 }, 500);
             }
         }
     });
 
-    $("#volumeSelect").change(function() 
-    {
+    $("#volumeSelect").change(function () {
         let addVolumeSelect;
-        if (playSound)
-        {
+        if (playSound) {
             const value = $(this).val();
 
             if (value === "0") {
@@ -81,11 +71,9 @@ $(function()
         $("#volumeClick").addClass("faicon " + addVolumeSelect);
     });
 
-    $('#darkModeSelect').change(() => 
-    {
+    $('#darkModeSelect').change(() => {
         let addDarkMode;
-        if (darkMode)
-        {
+        if (darkMode) {
             darkMode = false;
             addDarkMode = "fas fa-sun";
             $("body").removeAttr("data-darkmode");
@@ -101,14 +89,12 @@ $(function()
         $("#darkModeClick").addClass("faicon " + addDarkMode);
     });
 
-    $('#musicSoundSelect').change(() => 
-    {
+    $('#musicSoundSelect').change(() => {
         let addClassSound;
-        if (playSound)
-        {
+        if (playSound) {
             playSound = false;
             addClassSound = "fas fa-music-slash margin-left";
-            
+
             $("#volumeSelect").attr('disabled', true);
             sound.fade(1, 0, 1000);
 

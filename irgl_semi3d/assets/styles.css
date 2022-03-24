@@ -422,6 +422,137 @@ a {
     animation: animateCastle 2s;
 }
 
+.webgl2 {
+    position: absolute;
+    height: 100vh !important;
+    width: 50vw !important;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.registration-page {
+    /* jok lupa ganti */
+    transition: 300ms;
+}
+
+.registration-page .back-button {
+    position: absolute;
+    top: 0;
+    left: 3.5vh;
+    width: 25vw;
+    height: 100px;
+    float: left;
+    display: flex;
+    place-items: center;
+    font-size: 3vh;
+    color: white;
+    transition: transform 200ms;
+    cursor: pointer;
+    text-shadow: 4px 4px 0px rgba(34, 46, 36);
+}
+
+.registration-page .back-button:hover {
+    transform: translateX(2vh);
+}
+
+.registration-page .form-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50vw;
+    padding: 3vh;
+}
+
+.register-form {
+    display: grid;
+    height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.rows {
+    display: grid;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 50% 50%;
+}
+
+.register-form>* {
+    margin-bottom: 20px;
+}
+
+.register-form label {
+    font-family: JosefinRegular;
+    font-size: 3vh;
+    color: white;
+    text-shadow: 4px 4px 0px rgba(34, 46, 36);
+}
+
+.register-form input {
+    height: fit-content;
+    border-radius: 10px;
+    font-size: 2vh;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-left: 1.5vh;
+}
+
+.top-form .curr-form-info {
+    font-size: 5vh;
+    font-family: Bebas;
+    color: #adad79;
+    display: flex;
+    align-items: center;
+}
+
+.top-form .next-button, .top-form .back-button-mem {
+    cursor: pointer;
+    font-size: 4vh;
+    font-family: JosefinRegular;
+    color: #bbd1d3;
+    display: flex;
+    align-items: center;
+    transition: transform 200ms;
+}
+
+.top-form .next-button:hover {
+    transform: translateX(2vh);
+}
+
+.top-form .back-button-mem:hover {
+    transform: translateX(-2vh);
+}
+
+.register-form .top-form {
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+
+#member-1 .top-form, #member-2 .top-form {
+    display: grid;
+    grid-template-columns: 50% 25% 25% !important;
+}
+
+.submit-button-container {
+    display: flex;
+    align-self: center;
+    height: 50%
+}
+
+.submit-form {
+    border-radius: 1vh;
+    width: 80%;
+    font-family: JosefinRegular;
+    font-size: 3vh;
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.submit-form:hover {
+    transform: scale(1.10);
+}
+
 @keyframes animateCastle {
     50% {
         width: 380px;

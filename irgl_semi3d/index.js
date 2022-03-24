@@ -192,26 +192,26 @@ waterUniforms = water.material.uniforms;
 
 
 
-function getMousePositionSmall(e) {
-    const obj = document.querySelector(".webgl");
+// function getMousePositionSmall(e) {
+//     const obj = document.querySelector(".webgl");
 
-    let x = (e.clientX - obj.offsetLeft) / obj.offsetWidth;
-    let y = (e.clientY - obj.offsetTop) / obj.offsetHeight;
+//     let x = (e.clientX - obj.offsetLeft) / obj.offsetWidth;
+//     let y = (e.clientY - obj.offsetTop) / obj.offsetHeight;
 
-    // const maxAngleVer = 90;
-    // const maxAngleHor = 180;
+//     // const maxAngleVer = 90;
+//     // const maxAngleHor = 180;
 
-    const maxAngleVer = 30;
-    const maxAngleHor = 20;
+//     const maxAngleVer = 30;
+//     const maxAngleHor = 20;
 
-    x = (x - 0.5) * 2;
-    y = (y - 0.5) * 2;
+//     x = (x - 0.5) * 2;
+//     y = (y - 0.5) * 2;
 
-    mousePosSmall.x = x * maxAngleHor;
-    mousePosSmall.y = y * maxAngleVer;
-}
+//     mousePosSmall.x = x * maxAngleHor;
+//     mousePosSmall.y = y * maxAngleVer;
+// }
 
-document.querySelector(".webgl").addEventListener("mousemove", getMousePositionSmall);
+// document.querySelector(".webgl").addEventListener("mousemove", getMousePositionSmall);
 
 const clock = new THREE.Clock();
 
