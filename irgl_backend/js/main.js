@@ -6,7 +6,7 @@ $(function ()
 
 
     const sound = new Howl({
-        src: ['../assets/sound.mp3'],
+        src: ['assets/sound.mp3'],
         loop: true,
         volume: 0,
         onplay: function () {
@@ -138,7 +138,7 @@ $(function ()
         $('.form-regist input, .form-regist button').attr('disabled', 'disabled');
 
         $.ajax({
-            url         : '../backend/registration.php',
+            url         : 'backend/registration.php',
             data        : getDataForm, 
             cache       : false,
             contentType : false,
@@ -187,7 +187,7 @@ $(function ()
         $('.form-login input, .form-login button').attr('disabled', 'disabled');
 
         $.ajax({
-            url         : '../backend/login.php',
+            url         : 'backend/login.php',
             data        : getDataForm, 
             type        : 'POST',
             success     : function(data)
