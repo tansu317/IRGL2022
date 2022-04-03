@@ -1,3 +1,38 @@
+function changeStyleWebGl() 
+{
+    $('.webgl').css(
+        {
+            'width': $(window).width(),
+            'height': $(window).height()
+        }
+    );
+}
+
+function registerNext(curr, next, done = false) 
+{
+    if (!done) 
+    {
+        let currForm = document.querySelector(curr);
+        let nextForm = document.querySelector(next);
+        currForm.style.display = 'none';
+        currForm.style.pointerEvents = 'none';
+        nextForm.style.display = 'grid';
+        nextForm.style.pointerEvents = 'auto';
+    }
+}
+
+// function loadPage() {
+//     $(".registration-page").css("opacity", "1");
+//     $(".registration-page").css("pointer-events", "all");
+//     window.init3D2();
+//     window.animate3D2();
+// }
+
+// function unloadPage() {
+//     $(".registration-page").css("opacity", "0");
+//     $(".registration-page").css("pointer-events", "none");
+// }
+
 $(function () 
 {
     let playSound = false;
@@ -227,6 +262,10 @@ $(function ()
                     text: `System Error: ${thrownError}. Status: ${xhr.status}`,
                     confirmButtonColor: 'rgb(62, 82, 84)'
                 });
+            },
+            complete: () =>
+            {
+                grecaptcha.reset();
             }
         });
     });
