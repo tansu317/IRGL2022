@@ -94,6 +94,8 @@ if (isset($_SESSION['login_team']))
 
                 <a data-toggle="modal" data-target=".index-section" data-hide="#loginModal" class="back"><i class="fa fa-arrow-left"></i> Back To Main Menu</a>
             </div>
+
+            <div class="g-recaptcha" data-sitekey="<?=$recaptcha_stk?>" data-size="invisible"></div>
         </form>
     </div>
 
@@ -104,7 +106,7 @@ if (isset($_SESSION['login_team']))
 
             <canvas class="webgl2"></canvas>
 
-            <form method="post" class="form-regist" enctype="multipart/form-data">                
+            <form method="post" class="form-regist" enctype="multipart/form-data"> 
                 <div class="form-container">
                     <div class="register-form" id="team_regist">
 
@@ -424,52 +426,16 @@ if (isset($_SESSION['login_team']))
         </div>
     </div>
 
-
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
     <script src="./assets/sweet-alert/sweetalert2.min.js"></script>
 
     <script type="module" src="./js/index.js"></script>
     <script type="module" src="./js/registration.js"></script>
+    
     <script src="./js/main.js"></script>
-
     <script type="text/javascript">
-        function changeStyleWebGl() 
-        {
-            $('.webgl').css(
-                {
-                    'width': $(window).width(),
-                    'height': $(window).height()
-                }
-            );
-        }
-
-        function registerNext(curr, next, done = false) 
-        {
-            if (!done) 
-            {
-                let currForm = document.querySelector(curr);
-                let nextForm = document.querySelector(next);
-                currForm.style.display = 'none';
-                currForm.style.pointerEvents = 'none';
-                nextForm.style.display = 'grid';
-                nextForm.style.pointerEvents = 'auto';
-            }
-        }
-
-        // function loadPage() {
-        //     $(".registration-page").css("opacity", "1");
-        //     $(".registration-page").css("pointer-events", "all");
-        //     window.init3D2();
-        //     window.animate3D2();
-        // }
-
-        // function unloadPage() {
-        //     $(".registration-page").css("opacity", "0");
-        //     $(".registration-page").css("pointer-events", "none");
-        // }
-
-
         $(function () 
         {
             let sword;
