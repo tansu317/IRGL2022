@@ -88,7 +88,7 @@ if (isset($_SESSION['login_team']))
                     <input type="password" id="password" placeholder="Password" name="team_password"><br>
 
                     
-                    <div class="g-recaptcha" data-sitekey="<?=$recaptcha_stk?>"></div><br/>
+                    <div class="captcha" id="reCaptchaLogin" data-sitekey="<?=$recaptcha_stk?>"></div><br/>
 
                     <a href="#">Forgot Password?</a><br/><br/>
 
@@ -320,7 +320,7 @@ if (isset($_SESSION['login_team']))
 
                         <div class="rows">
                             <label for="mem2-captcha">Captcha Verification</label>
-                            <div class="g-recaptcha" data-sitekey="<?=$recaptcha_stk?>"></div><br/>
+                            <div class="captcha" id="reCaptchaRegister" data-sitekey="<?=$recaptcha_stk?>"></div><br/>
                         </div>
                         <div class="rows"></div>
                         <div class="rows"></div>
