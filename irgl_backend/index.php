@@ -118,8 +118,8 @@ if (isset($_SESSION['login_team']))
                                 TEAM
                             </div>
     
-                            <div class="next-button">
-                                <div class="next-inner" onclick="registerNext('#team_regist', '#leader')">
+                            <div class="next-button" onclick="registerNext('#team_regist', '#leader')">
+                                <div class="next-inner">
                                     NEXT
                                     <i class="fa fa-arrow-right"></i>
                                 </div>
@@ -155,14 +155,14 @@ if (isset($_SESSION['login_team']))
                             <div class="curr-form-info">
                                 LEADER
                             </div>
-                            <div class="back-button-mem">
-                                <div class="next-inner" onclick="registerNext('#leader', '#team_regist')">
+                            <div class="back-button-mem" onclick="registerNext('#leader', '#team_regist')">
+                                <div class="next-inner">
                                     <i class="fa fa-arrow-left"></i>
                                     BACK
                                 </div>
                             </div>
-                            <div class="next-button">
-                                <div class="next-inner" onclick="registerNext('#leader', '#member-1')">
+                            <div class="next-button" onclick="registerNext('#leader', '#member-1')">
+                                <div class="next-inner">
                                     NEXT
                                     <i class="fa fa-arrow-right"></i>
                                 </div>
@@ -203,14 +203,14 @@ if (isset($_SESSION['login_team']))
                                 FIRST MEMBER
                             </div>
 
-                            <div class="back-button-mem">
-                                <div class="next-inner" onclick="registerNext('#member-1', '#leader')">
+                            <div class="back-button-mem" onclick="registerNext('#member-1', '#leader')">
+                                <div class="next-inner">
                                     <i class="fa fa-arrow-left"></i>
                                     BACK
                                 </div>
                             </div>
-                            <div class="next-button">
-                                <div class="next-inner" onclick="registerNext('#member-1', '#member-2')">
+                            <div class="next-button" onclick="registerNext('#member-1', '#member-2')">
+                                <div class="next-inner">
                                     NEXT
                                     <i class="fa fa-arrow-right"></i>
                                 </div>
@@ -255,14 +255,14 @@ if (isset($_SESSION['login_team']))
                             <div class="curr-form-info">
                                 SECOND MEMBER
                             </div>
-                            <div class="back-button-mem">
-                                <div class="next-inner" onclick="registerNext('#member-2', '#member-1')">
+                            <div class="back-button-mem" onclick="registerNext('#member-2', '#member-1')">
+                                <div class="next-inner">
                                     <i class="fa fa-arrow-left"></i>
                                     BACK
                                 </div>
                             </div>
-                            <div class="next-button">
-                                <div class="next-inner" onclick="registerNext('#member-2', '#verifCaptcha')">
+                            <div class="next-button" onclick="registerNext('#member-2', '#verifCaptcha')">
+                                <div class="next-inner">
                                     NEXT
                                     <i class="fa fa-arrow-right"></i>
                                 </div>
@@ -305,8 +305,8 @@ if (isset($_SESSION['login_team']))
                             <div class="curr-form-info">
                                 VERIFICATION
                             </div>
-                            <div class="back-button-mem">
-                                <div class="next-inner" onclick="registerNext('#verifCaptcha', '#member-2')">
+                            <div class="back-button-mem" onclick="registerNext('#verifCaptcha', '#member-2')">
+                                <div class="next-inner">
                                     <i class="fa fa-arrow-left"></i>
                                     BACK
                                 </div>
