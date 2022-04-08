@@ -118,7 +118,7 @@ a {
 }
 
 .login-form .back {
-    margin-top: 2.5em;
+    margin-top: 1.5em;
     display: block;
     text-align: center;
     font-size: 20px;
@@ -134,7 +134,7 @@ a {
 }
 
 .login-form .content-section {
-    margin: 4em auto;
+    margin: 1.2em auto;
     max-width: 400px;
     padding: 20px;
 }
@@ -151,7 +151,8 @@ a {
     font-size: 18px;
     border-radius: 8px;
     outline: none;
-    border: none
+    border: none;
+    background: #fff;
 }
 
 .login-form .content-section button {
@@ -164,6 +165,17 @@ a {
     background: #9e9e70;
     color: #fff;
     cursor: pointer;
+}
+
+.login-form input:disabled, .register-form input:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+}
+
+.login-form .content-section button:disabled {
+    cursor: not-allowed;
+    background: #878760;
+    border-color: #878760;
 }
 
 .modal {
@@ -499,6 +511,12 @@ a {
     background-color: #fff;
 }
 
+.register-form button:disabled 
+{
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
 .top-form .curr-form-info {
     font-size: 5vh;
     font-family: Bebas;
@@ -530,7 +548,7 @@ a {
     grid-template-columns: 70% 30%;
 }
 
-#member-1 .top-form, #member-2 .top-form, #leader .top-form {
+#member-1 .top-form, #member-2 .top-form, #leader .top-form, #verifCaptcha .top-form {
     display: grid;
     grid-template-columns: 50% 25% 25% !important;
 }
