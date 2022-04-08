@@ -109,6 +109,14 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST' && !isset($_SESSION['login_team']))
     $fileExtensionTF= strtolower(end($fileExtTF));
 
 
+    $cek_captcha = verifikasiCaptcha($_POST['g-recaptcha-response'], $recaptcha_sck);
+
+    if (!$cek_captcha)
+    {
+        $msg = 'Please verify captcha.';
+    }
+    else 
+
     // Section 1
     if (mb_strlen($namaTim) < 3 || mb_strlen($namaTim) > 50)
     {
