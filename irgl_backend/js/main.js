@@ -21,6 +21,8 @@ function registerNext(curr, next, done = false)
     }
 }
 
+
+
 // function loadPage() {
 //     $(".registration-page").css("opacity", "1");
 //     $(".registration-page").css("pointer-events", "all");
@@ -51,6 +53,22 @@ $(function ()
             console.log("Howler not Playing");
         }
     });
+
+
+    const scaleCaptcha = () => 
+    {
+        const width = $('.g-recaptcha').parent().width();
+
+        if (width !== 0 && width < 302)
+        {
+            const scale = width / 302;
+
+            $('.g-recaptcha').css('transform', 'scale(' + scale + ')');
+            $('.g-recaptcha').css('-webkit-transform', 'scale(' + scale + ')');
+            $('.g-recaptcha').css('transform-origin', '0 0');
+            $('.g-recaptcha').css('-webkit-transform-origin', '0 0');
+        }
+    }
 
 
     $('[data-display=loader]').click(function() 
@@ -85,6 +103,12 @@ $(function ()
                 }, 500);
             }
         }
+
+        setTimeout(() =>
+        {
+            scaleCaptcha();    
+            $(window).resize(scaleCaptcha);
+        }, 1000);
     });
 
 
@@ -171,6 +195,7 @@ $(function ()
         const getDataForm = new FormData($(this)[0]);
 
         $('.form-regist input, .form-regist button').attr('disabled', 'disabled');
+        $('.form-regist button').text('Please Wait ...');
 
         $.ajax({
             url         : 'backend/registration.php',
@@ -183,6 +208,7 @@ $(function ()
             success     : function(data)
             {
                 $('.form-regist input, .form-regist button').removeAttr('disabled');
+                $('.form-regist button').text('Submit');
 
                 if (data.return)
                 {
@@ -200,6 +226,7 @@ $(function ()
             error: function (xhr, ajaxOptions, thrownError) 
             {
                 $('.form-regist input, .form-regist button').removeAttr('disabled');
+                $('.form-regist button').text('Submit');
 
                 Swal.fire({
                     icon: 'error',
@@ -207,6 +234,10 @@ $(function ()
                     text: `System Error: ${thrownError}. Status: ${xhr.status}`,
                     confirmButtonColor: 'rgb(62, 82, 84)'
                 });
+            },
+            complete: () =>
+            {
+                grecaptcha.reset();
             }
         });
     });
@@ -221,6 +252,8 @@ $(function ()
 
         $('.form-login input, .form-login button').attr('disabled', 'disabled');
 
+        $('.form-login button').text('Please wait ...');
+
         $.ajax({
             url         : 'backend/login.php',
             data        : getDataForm, 
@@ -228,6 +261,7 @@ $(function ()
             success     : function(data)
             {
                 $('.form-login input, .form-login button').removeAttr('disabled');
+                $('.form-login button').text('Login Now');
 
                 if (data.return)
                 {
@@ -255,6 +289,7 @@ $(function ()
             error: function (xhr, ajaxOptions, thrownError) 
             {
                 $('.form-login input, .form-login button').removeAttr('disabled');
+                $('.form-login button').text('Login Now');
                 
                 Swal.fire({
                     icon: 'error',
