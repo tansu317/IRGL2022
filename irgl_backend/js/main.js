@@ -54,19 +54,34 @@ $(function ()
         }
     });
 
+    const genereteRecaptcha = function(div) 
+    {
+        const objects = $(div);
+
+        return grecaptcha.render(objects.attr("id"), {
+            "sitekey" : objects.attr("data-sitekey")
+        });
+    }
+
+    
+
+    const captchaLogin      = genereteRecaptcha("#reCaptchaLogin");
+    const captchaRegister   = genereteRecaptcha("#reCaptchaRegister");
+
+
 
     const scaleCaptcha = () => 
     {
-        const width = $('.g-recaptcha').parent().width();
+        const width = $('.captcha').parent().width();
 
         if (width !== 0 && width < 302)
         {
             const scale = width / 302;
 
-            $('.g-recaptcha').css('transform', 'scale(' + scale + ')');
-            $('.g-recaptcha').css('-webkit-transform', 'scale(' + scale + ')');
-            $('.g-recaptcha').css('transform-origin', '0 0');
-            $('.g-recaptcha').css('-webkit-transform-origin', '0 0');
+            $('.captcha').css('transform', 'scale(' + scale + ')');
+            $('.captcha').css('-webkit-transform', 'scale(' + scale + ')');
+            $('.captcha').css('transform-origin', '0 0');
+            $('.captcha').css('-webkit-transform-origin', '0 0');
         }
     }
 
@@ -237,7 +252,7 @@ $(function ()
             },
             complete: () =>
             {
-                grecaptcha.reset();
+                grecaptcha.reset(captchaRegister);
             }
         });
     });
@@ -300,7 +315,7 @@ $(function ()
             },
             complete: () =>
             {
-                grecaptcha.reset();
+                grecaptcha.reset(captchaLogin);
             }
         });
     });
