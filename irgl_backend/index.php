@@ -87,6 +87,9 @@ if (isset($_SESSION['login_team']))
                     <label for="password"><b>Team Password</b></label>
                     <input type="password" id="password" placeholder="Password" name="team_password"><br>
 
+                    
+                    <div class="g-recaptcha" data-sitekey="<?=$recaptcha_stk?>"></div><br/>
+
                     <a href="#">Forgot Password?</a><br/><br/>
 
                     <button name="">Login Now</button><br/>
@@ -95,7 +98,7 @@ if (isset($_SESSION['login_team']))
                 <a data-toggle="modal" data-target=".index-section" data-hide="#loginModal" class="back"><i class="fa fa-arrow-left"></i> Back To Main Menu</a>
             </div>
 
-            <div class="g-recaptcha" data-sitekey="<?=$recaptcha_stk?>" data-size="invisible"></div>
+            
         </form>
     </div>
 
@@ -258,6 +261,56 @@ if (isset($_SESSION['login_team']))
                                     BACK
                                 </div>
                             </div>
+                            <div class="next-button">
+                                <div class="next-inner" onclick="registerNext('#member-2', '#verifCaptcha')">
+                                    NEXT
+                                    <i class="fa fa-arrow-right"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rows">
+                            <label for="mem1-name">Full Name</label>
+                            <input type="text" id="regis-mem2-name" name="member2" placeholder="Full Name">
+                            <label for="mem1-dob">Date of Birth</label>
+                            <input type="date" id="regis-mem2-dob" name="m2BD">
+                        </div>
+                        <div class="rows">
+                            <label for="mem1-cob">City of Birth</label>
+                            <input type="text" id="regis-mem2-cob" name="m2CB" placeholder="City of Birth">
+                            <label for="mem1-grade">School Grade</label>
+                            <input type="text" id="regis-mem2-grade" name="m2SG" placeholder="School Grade">
+                        </div>
+                        <div class="rows">
+                            <label for="mem1-address">Address</label>
+                            <input type="text" id="regis-mem2-address" name="m2Add" placeholder="Address">
+                            <label for="mem1-line">LINE ID</label>
+                            <input type="text" id="regis-mem2-line" name="m2Line" placeholder="LINE ID">
+                        </div>
+                        <div class="rows">
+                            <label for="mem1-phone">Phone Number</label>
+                            <input type="text" id="regis-mem2-phone" name="m2WA" placeholder="Phone Number">
+                            <label for="mem1-studid">Student ID (.jpg/jpeg, .png)</label>
+                            <input type="file" id="regis-mem2-studid" name="m2SC">
+                        </div>
+                        <div class="rows">
+                            <label for="mem2-phone">E-mail</label>
+                            <input type="text" id="regis-mem2-email" name="m2Email" placeholder="Email Address">
+                        </div>
+                    </div>
+
+                    <div class="register-form" id="verifCaptcha" style="display: none;">
+
+                        <div class="top-form">
+                            <div class="curr-form-info">
+                                VERIFICATION
+                            </div>
+                            <div class="back-button-mem">
+                                <div class="next-inner" onclick="registerNext('#verifCaptcha', '#member-2')">
+                                    <i class="fa fa-arrow-left"></i>
+                                    BACK
+                                </div>
+                            </div>
                             <div class="submit-button-container">
                                 <button class="submit-form">
                                     SUBMIT
@@ -266,33 +319,13 @@ if (isset($_SESSION['login_team']))
                         </div>
 
                         <div class="rows">
-                            <label for="mem1-name">Full Name</label>
-                            <input type="text" id="regis-mem1-name" name="member2" placeholder="Full Name">
-                            <label for="mem1-dob">Date of Birth</label>
-                            <input type="date" id="regis-mem1-dob" name="m2BD">
+                            <label for="mem2-captcha">Captcha Verification</label>
+                            <div class="g-recaptcha" data-sitekey="<?=$recaptcha_stk?>"></div><br/>
                         </div>
-                        <div class="rows">
-                            <label for="mem1-cob">City of Birth</label>
-                            <input type="text" id="regis-mem1-cob" name="m2CB" placeholder="City of Birth">
-                            <label for="mem1-grade">School Grade</label>
-                            <input type="text" id="regis-mem1-grade" name="m2SG" placeholder="School Grade">
-                        </div>
-                        <div class="rows">
-                            <label for="mem1-address">Address</label>
-                            <input type="text" id="regis-mem1-address" name="m2Add" placeholder="Address">
-                            <label for="mem1-line">LINE ID</label>
-                            <input type="text" id="regis-mem1-line" name="m2Line" placeholder="LINE ID">
-                        </div>
-                        <div class="rows">
-                            <label for="mem1-phone">Phone Number</label>
-                            <input type="text" id="regis-mem1-phone" name="m2WA" placeholder="Phone Number">
-                            <label for="mem1-studid">Student ID (.jpg/jpeg, .png)</label>
-                            <input type="file" id="regis-mem1-studid" name="m2SC">
-                        </div>
-                        <div class="rows">
-                            <label for="mem2-phone">E-mail</label>
-                            <input type="text" id="regis-mem2-email" name="m2Email" placeholder="Email Address">
-                        </div>
+                        <div class="rows"></div>
+                        <div class="rows"></div>
+                        <div class="rows"></div>
+                        <div class="rows"></div>
                     </div>
             </form>
         </div>
