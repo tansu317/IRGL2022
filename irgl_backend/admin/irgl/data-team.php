@@ -51,7 +51,6 @@ if (isset($_POST['verifikasi']) &&
 
     header('Content-Type: application/json');
     echo json_encode($json);
-    die;
 }
 else 
 {
