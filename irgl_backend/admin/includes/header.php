@@ -35,7 +35,7 @@
                             <i class="fa fa-search" aria-hidden="true"></i> Menu admin
                         </a>
                         <div class="dropdown-menu" aria-labelledby="menu-admin">
-                            <a class="dropdown-item" href="<?=$pathURL?>irgl/data-peserta.php">Data Peserta</a>
+                            <a class="dropdown-item" href="<?=$pathURL?>irgl/data-team.php">Data Peserta</a>
                             <a class="dropdown-item" href="#">Menu 2</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Menu 3</a>
