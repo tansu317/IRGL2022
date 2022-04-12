@@ -1,0 +1,5 @@
+# Please don't delete (for security to disable execute .php extension)
+<Files *.php>
+    Order Deny,Allow
+    Deny from all
+</Files>
