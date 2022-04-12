@@ -106,7 +106,7 @@ else
                                     echo "<td>" . htmlspecialchars($data['school']) . "</td>";
                                     echo '
                                         <td>
-                                            '.(file_exists($file_payment) ? '<a href="'.$payment_path.'" target="_blank" class="btn btn-primary btn-sm">Lihat Bukti</a>' : 'Tidak dapat menemukan file').'
+                                            '.(file_exists($file_payment) && !empty($data['payment_filepath']) ? '<a href="'.$payment_path.'" target="_blank" class="btn btn-primary btn-sm">Lihat Bukti</a>' : 'Tidak dapat menemukan file').'
                                         </td>';
                                     
                                     echo "<td>" . (strtotime($data['date_of_registration']) > 0 ? htmlspecialchars($data['date_of_registration']) : '-') . "</td>";
