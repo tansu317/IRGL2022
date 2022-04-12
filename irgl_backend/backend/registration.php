@@ -113,77 +113,85 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST' && !isset($_SESSION['login_team']))
 
     if (!$cek_captcha)
     {
-        $msg = 'Please verify captcha.';
+        $msg = 'Verification - Captcha Verification. Error: "Please verify captcha."';
     }
     else 
 
     // Section 1
     if (mb_strlen($namaTim) < 3 || mb_strlen($namaTim) > 50)
     {
-        $msg = 'Minimum team name 3 and maximum 50 characters.';
+        $msg = 'Team - Name. Error: "Minimum name 3 and maximum 50 characters."';
     }
     else if (!preg_match($regexnama, $namaTim)) 
     {
-        $msg = 'Characters in team names are only allowed a-z, A-Z, 0-9, _-. and space';
+        $msg = 'Team - Name. Error: "Characters only allowed a-z, A-Z, 0-9, _-. and space."';
     }
     else if ($stmt->rowCount() > 0)
     {
-        $msg = 'The team name has been used, please use another team name.';
+        $msg = 'Team - Name. Error: "The team name has been used, please use another team name."';
     }
     else if (mb_strlen($pass) < 8 || mb_strlen($pass) > 16)
     {
-        $msg  = 'Password minimum 8 and maximum 16.';
+        $msg  = 'Team - Password. Error: "Minimum 8 and maximum 16 characters."';
     }
     else if (mb_strlen($sekolah) < 8 || mb_strlen($sekolah) > 80)
     {
-        $msg  = 'Minimum school name 8 and maximum 80 characters.';
+        $msg  = 'Team - School Name. Error: "Minimum 8 and maximum 80 characters."';
+    }
+    else if (!in_array($fileExtensionTF, $bktfAllowTypes))
+    {
+        $msg = 'Team - Bukti Transfer. Error: "Format tidak didukung. Bukti transfer hanya mendukung format: .pdf"';
+    }
+    else if ($fileSizeTF > $sizeFileUp)
+    {
+        $msg = 'Team - Bukti Transfer. Error: "Maksimal ukuran file bukti transfer adalah 3MB."';
     }
 
 
     // Section 2
     else if (mb_strlen($ketua) < 5 || mb_strlen($ketua) > 50)
     {
-        $msg = 'Leader name is at least 5 and a maximum of 50 characters.';
+        $msg = 'Leader - Name. Error: "Name is at least 5 and a maximum of 50 characters."';
     }
     else if (!preg_match($regexEmail, $emailLeader))
     {
-        $msg = 'The leader\'s email format doesn\'t match.';
+        $msg = 'Leader - Email. Error: "Email format doesn\'t match."';
     }
     else if ($check_emailLD->rowCount() > 0)
     {
-        $msg = 'The leader\'s email has been registered, please use another email.';
+        $msg = 'Leader - Email. Error: "Email has been registered, please use another email."';
     }
     else if (!preg_match($regexBd, $dbLeader))
     {
-        $msg = 'The leader\'s birthday date format doesn\'t match.';
+        $msg = 'Leader - Date of Birth. Error: "Format doesn\'t match."';
     }
     else if (mb_strlen($cbLeader) < 5 || mb_strlen($cbLeader) > 30)
     {
-        $msg = 'City of birth leader minimum 5 and maximum 30 characters.';
+        $msg = 'Leader - City of Birth. Error: "Minimum 5 and maximum 30 characters."';
     }
-    else if (mb_strlen($sgLeader) < 3 || mb_strlen($sgLeader) > 30)
+    else if (!preg_match("/^[0-9]{1,2}$/", $sgLeader))
     {
-        $msg = 'Leader school grade minimum 3 and maximum 30 characters.';
+        $msg = 'Leader - School Grade. Error: "Minimum 1, maximum 2 characters and is a number."';
     }
     else if (mb_strlen($addLeader) < 12 || mb_strlen($addLeader) > 200)
     {
-        $msg = 'The leader\'s address is at least 12 and a maximum of 200 characters.';
+        $msg = 'Leader - Address. Error: "Address is at least 12 and a maximum of 200 characters."';
     }
     else if (mb_strlen($lineLeader) < 4 || mb_strlen($lineLeader) > 25)
     {
-        $msg = 'ID line leader minimum 4 and maximum 25 characters.';
+        $msg = 'Leader - ID Line. Error: "Minimum 4 and maximum 25 characters."';
     }
     else if (!preg_match($regexWa, $waLeader))
     {
-        $msg = 'Please enter the WhatsApp number leader correctly.';
+        $msg = 'Leader - Phone Number. Error: "The phone number format does not match."';
     }
     else if (!in_array($fileExtensionLD, $CmAllowTypes))
     {
-        $msg = 'The student card leader format is not supported. Only allowed: .jpg/jpeg, .png';
+        $msg = 'Leader - Student ID (Card). Error: "Format is not supported. Only allowed: .jpg/jpeg, .png"';
     }
     else if ($fileSizeLD > $sizeFileUp)
     {
-        $msg = 'The student card leader maximum 3MB.';
+        $msg = 'Leader - Student ID (Card). Error: "Maximum 3MB."';
     }
     // End Validation Section 2
 
@@ -192,47 +200,47 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST' && !isset($_SESSION['login_team']))
     // Section 3
     else if (mb_strlen($p1) < 5 || mb_strlen($p1) > 50)
     {
-        $msg = 'First member name is at least 5 and a maximum of 50 characters.';
+        $msg = 'First Member - Name. Error: "Name is at least 5 and a maximum of 50 characters."';
     }
     else if (!preg_match($regexEmail, $emailp1))
     {
-        $msg = 'The first member email format doesn\'t match.';
+        $msg = 'First Member - Email. Error: "Email format doesn\'t match."';
     }
     else if ($check_emailFM->rowCount() > 0)
     {
-        $msg = 'The first member email has been registered, please use another email.';
+        $msg = 'First Member - Email. Error: "Email has been registered, please use another email."';
     }
     else if (!preg_match($regexBd, $dbp1))
     {
-        $msg = 'The first member birthday date format doesn\'t match.';
+        $msg = 'First Member - Date of Birth. Error: "Format doesn\'t match."';
     }
     else if (mb_strlen($cbp1) < 5 || mb_strlen($cbp1) > 30)
     {
-        $msg = 'City of Birth first member minimum 5 and maximum 30 characters.';
+        $msg = 'First Member - City of Birth. Error: "Minimum 5 and maximum 30 characters."';
     }
-    else if (mb_strlen($sgp1) < 3 || mb_strlen($sgp2) > 30)
+    else if (!preg_match("/^[0-9]{1,2}$/", $sgp1))
     {
-        $msg = 'First member school grade minimum 3 and maximum 30 characters.';
+        $msg = 'First Member - School Grade. Error: "Minimum 1, maximum 2 characters and is a number."';
     }
     else if (mb_strlen($addp1) < 12 || mb_strlen($addp1) > 200)
     {
-        $msg = 'The first member address is at least 12 and a maximum of 200 characters.';
+        $msg = 'First Member - Address. Error: "Address is at least 12 and a maximum of 200 characters."';
     }
     else if (mb_strlen($linep1) < 4 || mb_strlen($linep1) > 25)
     {
-        $msg = 'ID line first member minimum 4 and maximum 25 characters.';
+        $msg = 'First Member - ID Line. Error: "Minimum 4 and maximum 25 characters."';
     }
     else if (!preg_match($regexWa, $wap1))
     {
-        $msg = 'Please enter the WhatsApp number first member correctly.';
+        $msg = 'First Member - Phone Number. Error: "The phone number format does not match."';
     }
     else if (!in_array($fileExtensionFM, $CmAllowTypes))
     {
-        $msg = 'The student card first member format is not supported. Only allowed: .jpg/jpeg, .png';
+        $msg = 'First Member - Student ID (Card). Error: "Format is not supported. Only allowed: .jpg/jpeg, .png"';
     }
     else if ($fileSizeFM > $sizeFileUp)
     {
-        $msg = 'The student card first member maximum 3MB.';
+        $msg = 'First Member - Student ID (Card). Error: "Maximum 3MB."';
     }
     // End Validation Section 3
 
@@ -241,61 +249,50 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST' && !isset($_SESSION['login_team']))
     // Section 4
     else if ($smIsRegis && (mb_strlen($p2) < 5 || mb_strlen($p2) > 50))
     {
-        $msg = 'Second member name is at least 5 and a maximum of 50 characters.';
+        $msg = 'Second Member - Name. Error: "Name is at least 5 and a maximum of 50 characters."';
     }
     else if ($smIsRegis && !preg_match($regexEmail, $emailp2))
     {
-        $msg = 'The second member email format doesn\'t match.';
+        $msg = 'Second Member - Email. Error: "Email format doesn\'t match."';
     }
     else if ($smIsRegis && ($check_emailSM->rowCount() > 0))
     {
-        $msg = 'The second member email has been registered, please use another email.';
+        $msg = 'Second Member - Email. Error: "Email has been registered, please use another email."';
     }
     else if ($smIsRegis && !preg_match($regexBd, $dbp2))
     {
-        $msg = 'The second member birthday date format doesn\'t match.';
+        $msg = 'Second Member - Date of Birth. Error: "Format doesn\'t match."';
     }
     else if ($smIsRegis && (mb_strlen($cbp2) < 5 || mb_strlen($cbp2) > 30))
     {
-        $msg = 'City of Birth second member minimum 5 and maximum 30 characters.';
+        $msg = 'Second Member - City of Birth. Error: "Minimum 5 and maximum 30 characters."';
     }
-    else if ($smIsRegis && (mb_strlen($sgp2) < 3 || mb_strlen($sgp2) > 30))
+    else if ($smIsRegis && (!preg_match("/^[0-9]{1,2}$/", $sgp2)))
     {
-        $msg = 'Second member school grade minimum 3 and maximum 30 characters.';
+        $msg = 'Second Member - School Grade. Error: "Minimum 1, maximum 2 characters and is a number."';
     }
     else if ($smIsRegis && (mb_strlen($addp2) < 12 || mb_strlen($addp2) > 200))
     {
-        $msg = 'The second member address is at least 12 and a maximum of 200 characters.';
+        $msg = 'Second Member - Address. Error: "Address is at least 12 and a maximum of 200 characters."';
     }
     else if ($smIsRegis && (mb_strlen($linep2) < 4 || mb_strlen($linep2) > 25))
     {
-        $msg = 'ID line second member minimum 4 and maximum 25 characters.';
+        $msg = 'Second Member - ID Line. Error: "Minimum 4 and maximum 25 characters."';
     }
     else if ($smIsRegis && !preg_match($regexWa, $wap2))
     {
-        $msg = 'Please enter the WhatsApp number second member correctly.';
+        $msg = 'Second Member - Phone Number. Error: "The phone number format does not match."';
     }
     else if ($smIsRegis && !in_array($fileExtensionSM, $CmAllowTypes))
     {
-        $msg = 'The student card second member format is not supported. Only allowed: .jpg/jpeg, .png';
+        $msg = 'Second Member - Student ID (Card). Error: "Format is not supported. Only allowed: .jpg/jpeg, .png"';
     }
     else if ($smIsRegis && ($fileSizeSM > $sizeFileUp))
     {
-        $msg = 'The student card second member maximum 3MB.';
+        $msg = 'Second Member - Student ID (Card). Error: "Maximum 3MB."';
     }
     // End Validation Section 4
 
-
-
-    // Section 5
-    else if (!in_array($fileExtensionTF, $bktfAllowTypes))
-    {
-        $msg = 'Format bukti transfer tidak didukung. Bukti transfer hanya mendukung format: .pdf';
-    }
-    else if ($fileSizeTF > $sizeFileUp)
-    {
-        $msg = 'Maksimal ukuran file bukti transfer adalah 3MB.';
-    }
     else
     {
         //  Total Partisipan
@@ -348,7 +345,11 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST' && !isset($_SESSION['login_team']))
         }
         // End Card Member
 
-    
+
+        // Insert Main Participant
+        $team_id = $pdo->lastInsertId(); // Buat dapatin ID "Main Teams" Yang Habis Diinsert
+
+
         function insertMainParticipants($team_id, $name, $datebirth, $citybirth, $sg, 
                                         $address, $line_id, $email, $phone_number, $std_path)
         {
@@ -370,15 +371,19 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST' && !isset($_SESSION['login_team']))
             $insert_main->bindParam(':sc', $std_path);
             $insert_main->execute();
         }
-
-        // Insert Main Participant
-        $team_id = $pdo->lastInsertId(); // Buat dapatin ID "Main Teams" Yang Habis Diinsert
         
         // Leader
         insertMainParticipants($team_id, $ketua, $dbLeader, $cbLeader, $sgLeader, $addLeader, $lineLeader, $emailLeader, $waLeader, $moveLD);
+        $leader_id = $pdo->lastInsertId();
+
+        $update_leader = "UPDATE `2022_main_teams` SET leader_id = '$leader_id' WHERE id = '$team_id'";
+        $update_leader = $pdo->prepare($update_leader);
+        $update_leader->execute();
+
 
         // First Member
         insertMainParticipants($team_id, $p1, $dbp1, $cbp1, $sgp1, $addp1, $linep1, $emailp1, $wap1, $moveFM);
+
 
         // Second Member
         if ($smIsRegis)
