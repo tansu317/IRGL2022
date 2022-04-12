@@ -131,7 +131,7 @@ if (isset($_SESSION['login_team']))
                             <input type="text" id="team-name" name="teamName" placeholder="Team Name">
     
                             <label for="team_pass">Team Password</label>
-                            <input type="password" placeholder="Enter password" id="team_pass" name="pwd" minlength="8">
+                            <input type="password" placeholder="Enter password" id="team_pass" name="pwd">
                         </div>
 
                         <div class="rows">
@@ -186,7 +186,7 @@ if (isset($_SESSION['login_team']))
                         </div>
                         <div class="rows"><label for="leader-phone">Phone Number</label>
                             <input type="text" id="regis-leader-phone" name="leaderWA" placeholder="Phone Number">
-                            <label for="leader-studid">Student ID (.jpg/jpeg, .png)</label>
+                            <label for="leader-studid">Student ID - Card (.jpg/jpeg, .png)</label>
                             <input type="file" id="regis-leader-studid" name="leaderSC">
                         </div>
                         <div class="rows">
@@ -238,7 +238,7 @@ if (isset($_SESSION['login_team']))
                         <div class="rows">
                             <label for="mem1-phone">Phone Number</label>
                             <input type="text" id="regis-mem1-phone" name="m1WA" placeholder="Phone Number">
-                            <label for="mem1-studid">Student ID (.jpg/jpeg, .png)</label>
+                            <label for="mem1-studid">Student ID - Card (.jpg/jpeg, .png)</label>
                             <input type="file" id="regis-mem1-studid" name="m1SC">
                         </div>
                         <div class="rows">
@@ -290,7 +290,7 @@ if (isset($_SESSION['login_team']))
                         <div class="rows">
                             <label for="mem1-phone">Phone Number</label>
                             <input type="text" id="regis-mem2-phone" name="m2WA" placeholder="Phone Number">
-                            <label for="mem1-studid">Student ID (.jpg/jpeg, .png)</label>
+                            <label for="mem1-studid">Student ID - Card (.jpg/jpeg, .png)</label>
                             <input type="file" id="regis-mem2-studid" name="m2SC">
                         </div>
                         <div class="rows">
