@@ -38,11 +38,13 @@ function isUserLogin()
             $redir = $pathURL.'login.php';
         }
     }
-    else {
+    else 
+    {
         $redir = $pathURL.'login.php';
     }
 
-    header('Location: '.$redir);
+    if (!empty($redir))
+        header('Location: '.$redir);
 }
 
 
