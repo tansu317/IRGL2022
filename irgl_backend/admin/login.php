@@ -23,7 +23,7 @@ if (isset($_POST['masuk']))
      
     if (!$responseCaptchaData->success) 
     {
-        $error = 'Pastikan Google reCAPTCHA telah tercentang!';
+        $error = 'Silahkan verifikasi captcha terlebih dahulu!';
     }
     else
     {
