@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST')
             $msg = 'Your email is not registered.';
     }
     else 
-        $msg = 'Please verify captcha.';
+        $msg = 'Please verify the captcha first!';
 }
 
 header('Content-Type: application/json');
