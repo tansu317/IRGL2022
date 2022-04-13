@@ -11,10 +11,17 @@ if (isset($_POST['masuk']))
     $tetapMasuk = isset($_POST['tetap_masuk']) ? $_POST['tetap_masuk'] : '';
     $recaptchaResponse = $_POST['g-recaptcha-response'];
 
-    $recaptchaGet = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$reCaptcha['secret_key'].'&response='.$recaptchaResponse);
-    $recaptchaJSON = json_decode($recaptchaGet);
-
-    if (!$recaptchaJSON->success) 
+    $url = 'https://www.google.com/recaptcha/api/siteverify?secret='.$reCaptcha['secret_key'].'&response='.$recaptchaResponse;
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, $url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($curl, CURLOPT_HEADER, false);
+    $data = curl_exec($curl);
+    curl_close($curl);
+    $responseCaptchaData = json_decode($data);
+    
+     
+    if (!$responseCaptchaData->success) 
     {
         $error = 'Pastikan Google reCAPTCHA telah tercentang!';
     }
@@ -22,33 +29,33 @@ if (isset($_POST['masuk']))
     {
         // Login ke john.petra.ac.id
         $imap       = false;
-        // $host       = 'john.petra.ac.id';
-        // $port       = 110;
-        // $timeout    = 30;
-        // $fp         = fsockopen($host, $port, $errno, $errstr, $timeout);
-        // $errstr     = fgets($fp);
+        $host       = 'john.petra.ac.id';
+        $port       = 110;
+        $timeout    = 30;
+        $fp         = fsockopen($host, $port, $errno, $errstr, $timeout);
+        $errstr     = fgets($fp);
 
-        // if (substr($errstr, 0, 1) == '+') 
-        // {
-        //     fputs($fp, "USER ".$nrp."\n");
-        //     $errstr = fgets($fp);
+        if (substr($errstr, 0, 1) == '+') 
+        {
+            fputs($fp, "USER ".$nrp."\n");
+            $errstr = fgets($fp);
 
-        //     if (substr($errstr, 0, 1) == '+') 
-        //     {
-        //         fputs($fp, "PASS ".$pass."\n");
-        //         $errstr = fgets($fp);
+            if (substr($errstr, 0, 1) == '+') 
+            {
+                fputs($fp, "PASS ".$pass."\n");
+                $errstr = fgets($fp);
 
-        //         if (substr($errstr, 0, 1) == '+') 
-        //         {
-        //             $imap = true;
-        //         }
-        //     }
-        // }
+                if (substr($errstr, 0, 1) == '+') 
+                {
+                    $imap = true;
+                }
+            }
+        }
 
 
         // Uji Coba login
-        if ($nrp == 'c14210004' && $pass == 'cobapass')
-            $imap = true;
+        // if ($nrp == 'c14210004' && $pass == 'cobapass')
+        //     $imap = true;
 
         if ($imap)
         {
@@ -94,17 +101,17 @@ if (isset($_POST['masuk']))
         <meta name="viewport" content="width=device-width,initial-scale=1" />
 
         <!-- Style -->
-        <link rel="stylesheet" href="<?=$pathURL?>assets/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="<?=$pathURL?>assets/css/styles.css" />
+        <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="./assets/css/styles.css" />
 
         <!-- Favicon-->
-        <link rel="icon" href="<?=$pathURL?>assets/images/favicon.ico" />
+        <link rel="icon" href="./assets/images/favicon.ico" />
     </head>
     <body>
 
         <div class="login-form">
             <div class="logo-irgl">
-                <img src="<?=$pathURL?>assets/images/logo-irgl.png" alt="IRGL 2022" />
+                <img src="./assets/images/logo-irgl.png" alt="IRGL 2022" />
             </div>
             
             <div class="box-login">
@@ -132,9 +139,9 @@ if (isset($_POST['masuk']))
         </div>
 
         <script src="https://www.google.com/recaptcha/api.js"></script>
-        <script src="<?=$pathURL?>assets/js/jquery-3.6.0.min.js"></script>
-        <script src="<?=$pathURL?>assets/js/popper.min.js"></script>
-        <script src="<?=$pathURL?>assets/js/bootstrap.min.js"></script>
+        <script src="./assets/js/jquery-3.6.0.min.js"></script>
+        <script src="./assets/js/popper.min.js"></script>
+        <script src="./assets/js/bootstrap.min.js"></script>
 
         <!-- reCaptcha Responsive -->
         <script type="text/javascript">
