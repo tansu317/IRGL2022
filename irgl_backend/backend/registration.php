@@ -113,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST' && !isset($_SESSION['login_team']))
 
     if (!$cek_captcha)
     {
-        $msg = 'Verification - Captcha Verification. Error: "Please verify captcha."';
+        $msg = 'Verification - Captcha Verification. Error: "Please verify the captcha first!"';
     }
     else 
 
