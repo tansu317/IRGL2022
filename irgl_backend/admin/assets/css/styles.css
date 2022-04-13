@@ -318,3 +318,13 @@ a:hover {
     padding: 12px 0;
     margin-bottom: 3em;
 }
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    min-width: 2em!important;
+    padding: 0.2em 0.3em!important;
+}
+
+.dataTables_info, .dataTables_paginate {
+    padding: 0.5em 0!important;
+    padding-top: 2em!important;
+}
