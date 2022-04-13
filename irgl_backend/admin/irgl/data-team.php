@@ -97,7 +97,7 @@ else
                                     $verificator    = '-'.(!empty($data['verificator']) ? ' '.htmlspecialchars($data['verificator']) : '');
                                     $dateVerify     = '-'.(strtotime($data['date_of_verification']) > 0 ? ' '.$data['date_of_verification'] : '');
                                     $payment_path   = '/backend/uploads/bukti_transfer/'.htmlspecialchars($data['payment_filepath']);
-                                    $file_payment   = $_SERVER['DOCUMENT_ROOT'].$payment_path;
+                                    $file_payment   = '../../'.$payment_path;
 
                                     echo "<tr>";
                                     echo "<td>" . htmlspecialchars($data['id']) . "</td>";
