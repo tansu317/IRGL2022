@@ -72,7 +72,7 @@ function verifikasiCaptcha($post, $secret_key)
         $url = 'https://www.google.com/recaptcha/api/siteverify?secret='.$secret_key.'&response='.$post;
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_HEADER, false);
         $data = curl_exec($curl);
         curl_close($curl);
