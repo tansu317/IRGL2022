@@ -87,7 +87,7 @@ a:hover {
     vertical-align: middle;
     font-size: 22px;
     margin-left: 8px;
-    color: #ede7c5;
+    color: #eee;
     font-weight: bold;
     font-family: CinzelBlack;
 }
@@ -97,7 +97,7 @@ a:hover {
 }
 
 .navbar.navbar-custom .navbar-nav > li > a {
-    color: #ede7c5;
+    color: #eee;
     font-weight: bold;
 }
 
