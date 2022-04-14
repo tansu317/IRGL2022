@@ -60,7 +60,7 @@ else
 ?>
 
 <!-- Container -->
-<div class="container" style="max-width: 1300px">
+<div class="container" style="max-width: 1400px">
     <div class="box-content">
         <div class="title">
             Data Team IRGL 2022
