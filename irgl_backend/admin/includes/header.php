@@ -8,8 +8,8 @@
         <!-- Style -->
         <link rel="stylesheet" href="<?=$pathURL?>assets/css/bootstrap.min.css" />
         <link rel="stylesheet" href="<?=$pathURL?>assets/css/font-awesome.min.css" />
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
         <link rel="stylesheet" href="<?=$pathURL?>assets/css/styles.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 
         <!-- Favicon-->
         <link rel="icon" href="<?=$pathURL?>assets/images/favicon.ico" />
@@ -36,8 +36,8 @@
                             <i class="fa fa-search" aria-hidden="true"></i> Menu admin
                         </a>
                         <div class="dropdown-menu" aria-labelledby="menu-admin">
-                            <a class="dropdown-item" href="<?=$pathURL?>irgl/data-team.php">Data Peserta</a>
-                            <a class="dropdown-item" href="#">Menu 2</a>
+                            <a class="dropdown-item" href="<?=$pathURL?>irgl/data-peserta.php">Data Peserta</a>
+                            <a class="dropdown-item" href="<?=$pathURL?>irgl/data-team.php">Data Team</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Menu 3</a>
                         </div>
