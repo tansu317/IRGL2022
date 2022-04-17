@@ -209,7 +209,7 @@ $(function ()
         e.preventDefault();
         const getDataForm = new FormData($(this)[0]);
 
-        $('.form-regist input, .form-regist button').attr('disabled', 'disabled');
+        $('.form-regist input, .form-regist select, .form-regist button').attr('disabled', 'disabled');
         $('.form-regist button').text('Please Wait ...');
 
         $.ajax({
@@ -222,20 +222,42 @@ $(function ()
             enctype     : 'multipart/form-data',
             success     : function(data)
             {
-                $('.form-regist input, .form-regist button').removeAttr('disabled');
+                $('.form-regist input, .form-regist select, .form-regist button').removeAttr('disabled');
                 $('.form-regist button').text('Submit');
 
                 if (data.return)
                 {
-                    Swal.fire({
-                        icon: data.success_regist ? 'success' : 'error',
-                        title: data.success_regist ? 'Successfully Registered' : 'Oops...',
-                        text: data.message,
-                        confirmButtonColor: 'rgb(62, 82, 84)'
-                    });
-
                     if (data.success_regist)
+                    {
                         $('.form-regist input').val('');
+                        $('.select-custom').prop('selectedIndex', 0);
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Successfully Registered',
+                            text: data.message,
+                            timer: 2000,
+                            showConfirmButton: false,
+                            willClose: () => 
+                            {
+                                $('#registrationModal').fadeOut();
+                                registerNext('#verifCaptcha', '#team_regist');
+                                
+                                setTimeout(() => {
+                                    $('.index-section').fadeIn();
+                                }, 500);
+                            }
+                        });
+                    }
+                    else
+                    {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: data.message,
+                            confirmButtonColor: 'rgb(62, 82, 84)'
+                        });
+                    }
                 }
             },
             error: function (xhr, ajaxOptions, thrownError) 
@@ -284,7 +306,8 @@ $(function ()
                         icon: data.success_login ? 'success' : 'error',
                         title: data.success_login ? 'Successfully logged in' : 'Oops...',
                         text: data.message,
-                        confirmButtonColor: 'rgb(62, 82, 84)'
+                        confirmButtonColor: 'rgb(62, 82, 84)',
+                        showConfirmButton: !data.success_login
                     });
 
                     if (data.success_login)
