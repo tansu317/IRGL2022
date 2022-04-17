@@ -4,6 +4,8 @@ ErrorDocument 404 /_admin_irgl2022/err.php
 # Secure Directory List
 Options All -Indexes
 
+php_value date.timezone 'Asia/Jakarta'
+
 # Gzip Compression
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/html
