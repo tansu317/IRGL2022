@@ -93,7 +93,7 @@ function kirimEmail($to, $subject, $message, $from)
 
                                     // Konten Email Yang Mau Dikirim
                                     $title_email = 'IRGL 2022 - Petra';
-                                    $from_email  = 'irglukpetra@andsp.id';
+                                    $from_email  = '';
                                     $subject     = 'Someone requests to reset your team password.';
                                     $message     = 
                                     '
@@ -128,7 +128,7 @@ function kirimEmail($to, $subject, $message, $from)
                                     $mail->SMTPSecure   = 'ssl';
                                     $mail->SMTPAuth     = true;
                                     $mail->Username     = $from_email;
-                                    $mail->Password     = "SacredExcalibur";
+                                    $mail->Password     = "";
 
                                     $mail->setFrom($from_email, $title_email);
                                     $mail->addReplyTo($from_email, $title_email);
