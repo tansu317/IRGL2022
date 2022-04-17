@@ -16,25 +16,28 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST')
         $email  = trim(strtolower($_POST['email']));
         $pass   = $_POST['team_password'];
 
-        // Cek email user
-        $sql_ceu = "SELECT team_id FROM `2022_main_participants` WHERE email = :email";
-        $check_ceu = $pdo->prepare($sql_ceu);
-        $check_ceu->bindParam(':email', $email);
-        $check_ceu->execute();
-
-        if ($check_ceu->rowCount() > 0)
+        if (empty($email) || empty($pass))
+            $msg = 'The login form is still empty, please fill it first.';
+        else
         {
-            $fetch_ceu = $check_ceu->fetch(PDO::FETCH_OBJ);
-
-            // Cek Main Teams
-            $sql_cmt = "SELECT status, password FROM `2022_main_teams` WHERE id = :id";
-            $check_cmt = $pdo->prepare($sql_cmt);
-            $check_cmt->bindParam(':id', $fetch_ceu->team_id);
-            $check_cmt->execute();
+            // Cek email user
+            $sql_ceu = 
+            "SELECT team_id, 
+                    mt.status, 
+                    password 
+            FROM `2022_main_participants` mp
+                INNER JOIN `2022_main_teams` mt
+                    ON mp.team_id = mt.id
+            WHERE email = :email OR mt.name = :name
+                LIMIT 1";
+            $check_ceu = $pdo->prepare($sql_ceu);
+            $check_ceu->bindParam(':email', $email);
+            $check_ceu->bindParam(':name', $email);
+            $check_ceu->execute();
 
             if ($check_ceu->rowCount() > 0)
             {
-                $fetch_cmt = $check_cmt->fetch(PDO::FETCH_OBJ);
+                $fetch_cmt = $check_ceu->fetch(PDO::FETCH_OBJ);
 
                 if (!password_verify($pass, $fetch_cmt->password))
                 {
@@ -42,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST')
                 }
                 else if ($fetch_cmt->status == 0)
                 {
-                    $msg = 'Your team is still not approved, please contact the Administrator.';
+                    $msg = 'Your team is still not approved.';
                 }
                 else 
                 {
@@ -50,26 +53,27 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST')
                     $time_login = date('Y-m-d H:i:s');
 
                     // Update Main Teams
-                    $_SESSION['login_team'] = $login_token;
-                    $sql_update_main = "UPDATE `2022_main_teams` SET `date_of_last_login` = '$time_login' WHERE id = :id";
-
+                    $sql_update_main = "UPDATE `2022_main_teams` SET login_token = :token, date_of_last_login = :tl WHERE id = :id";
                     $update_main = $pdo->prepare($sql_update_main);
-                    $update_main->bindParam(':id', $fetch_ceu->team_id);
+                    $update_main->bindParam(':token', $login_token);
+                    $update_main->bindParam(':tl', $time_login);
+                    $update_main->bindParam(':id', $fetch_cmt->team_id);
                     $update_main->execute();
 
-                    // // redirect
-                    // header('location: ./coming_soon.php');
-
-                    $successLogin   = true;
-                    $redirect       = './index.php';
-                    $msg            = 'Successfully logged in, you will be redirected to a new page.';
+                    if ($update_main)
+                    {
+                        $_SESSION['login_team'] = $login_token;
+                        $successLogin   = true;
+                        $redirect       = './index.php';
+                        $msg            = 'Successfully logged in, you will be redirected to a new page.';
+                    }
+                    else
+                        $msg = 'Login failed! please contact the administrator.';
                 }
             }
             else
-                $msg = 'Your team is not registered, please contact the Administrator.';
+                $msg = 'Your email or team name is not registered.';
         }
-        else
-            $msg = 'Your email is not registered.';
     }
     else 
         $msg = 'Please verify the captcha first!';
