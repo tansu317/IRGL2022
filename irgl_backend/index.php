@@ -81,8 +81,8 @@ if (isset($_SESSION['login_team']))
                 </div>
 
                 <div class="content-section">
-                    <label for="team_email"><b>E-mail</b></label>
-                    <input type="email" id="team_email" placeholder="Your Email" name="email"><br>
+                    <label for="team_email"><b>E-mail or Team Name</b></label>
+                    <input type="text" id="team_email" placeholder="Your Email or Team Name" name="email"><br>
 
                     <label for="password"><b>Team Password</b></label>
                     <input type="password" id="password" placeholder="Password" name="team_password"><br>
@@ -90,12 +90,12 @@ if (isset($_SESSION['login_team']))
                     
                     <div class="captcha" id="reCaptchaLogin" data-sitekey="<?=$recaptcha_stk?>"></div><br/>
 
-                    <a href="#">Forgot Password?</a><br/><br/>
+                    <a href="<?=$pathURL?>/forgot.php" target="_blank">Forgot Password?</a><br/><br/>
 
-                    <button name="">Login Now</button><br/>
+                    <button>Login Now</button>
+
+                    <a data-toggle="modal" data-target=".index-section" data-hide="#loginModal" class="back"><i class="fa fa-arrow-left"></i> Back To Main Menu</a> 
                 </div>
-
-                <a data-toggle="modal" data-target=".index-section" data-hide="#loginModal" class="back"><i class="fa fa-arrow-left"></i> Back To Main Menu</a>
             </div>
 
             
@@ -138,7 +138,7 @@ if (isset($_SESSION['login_team']))
                             <label for="team-school">School Name</label>
                             <input type="text" id="team-school" name="schoolName" placeholder="School Name">
 
-                            <label for="">Bukti Transfer (.pdf)</label>
+                            <label for="">Bukti Transfer<br/>(.jpg/jpeg, .png, .pdf)</label>
                             <input type="file" name="buktiTrf" id="buktiTrf"><br/>
                         </div>
 
@@ -172,12 +172,18 @@ if (isset($_SESSION['login_team']))
                         <div class="rows"> <label for="leader-name">Full Name</label>
                             <input type="text" id="regis-leader-name" name="leaderName" placeholder="Full Name">
                             <label for="leader-dob">Date of Birth</label>
-                            <input type="date" id="regis-leader-dob" name="leaderBD">
+                            <input type="text" id="regis-leader-dob" placeholder="yyyy-mm-dd" name="leaderBD">
                         </div>
                         <div class="rows"><label for="leader-cob">City of Birth</label>
                             <input type="text" id="regis-leader-cob" name="leaderCB" placeholder="City of Birth">
                             <label for="leader-grade">School Grade</label>
-                            <input type="text" id="regis-leader-grade" name="leaderSG" placeholder="School Grade">
+
+                            <select class="select-custom" name="leaderSG">
+                                <option value="">School Grade:</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
                         </div>
                         <div class="rows"><label for="leader-address">Address</label>
                             <input type="text" id="regis-leader-address" name="leaderAdd" placeholder="Address">
@@ -186,7 +192,7 @@ if (isset($_SESSION['login_team']))
                         </div>
                         <div class="rows"><label for="leader-phone">Phone Number</label>
                             <input type="text" id="regis-leader-phone" name="leaderWA" placeholder="Phone Number">
-                            <label for="leader-studid">Student ID - Card (.jpg/jpeg, .png)</label>
+                            <label for="leader-studid">Student ID - Card<br/>(.jpg/jpeg, .png, .pdf)</label>
                             <input type="file" id="regis-leader-studid" name="leaderSC">
                         </div>
                         <div class="rows">
@@ -221,13 +227,18 @@ if (isset($_SESSION['login_team']))
                             <label for="mem1-name">Full Name</label>
                             <input type="text" id="regis-mem1-name" name="member1" placeholder="Full Name">
                             <label for="mem1-dob">Date of Birth</label>
-                            <input type="date" id="regis-mem1-dob" name="m1BD">
+                            <input type="text" id="regis-mem1-dob" placeholder="yyyy-mm-dd" name="m1BD">
                         </div>
                         <div class="rows">
                             <label for="mem1-cob">City of Birth</label>
                             <input type="text" id="regis-mem1-cob" name="m1CB" placeholder="City of Birth">
                             <label for="mem1-grade">School Grade</label>
-                            <input type="text" id="regis-mem1-grade" name="m1SG" placeholder="School Grade">
+                            <select class="select-custom" name="m1SG">
+                                <option value="">School Grade:</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
                         </div>
                         <div class="rows">
                             <label for="mem1-address">Address</label>
@@ -238,7 +249,7 @@ if (isset($_SESSION['login_team']))
                         <div class="rows">
                             <label for="mem1-phone">Phone Number</label>
                             <input type="text" id="regis-mem1-phone" name="m1WA" placeholder="Phone Number">
-                            <label for="mem1-studid">Student ID - Card (.jpg/jpeg, .png)</label>
+                            <label for="mem1-studid">Student ID - Card<br/>(.jpg/jpeg, .png, .pdf)</label>
                             <input type="file" id="regis-mem1-studid" name="m1SC">
                         </div>
                         <div class="rows">
@@ -273,13 +284,18 @@ if (isset($_SESSION['login_team']))
                             <label for="mem1-name">Full Name</label>
                             <input type="text" id="regis-mem2-name" name="member2" placeholder="Full Name">
                             <label for="mem1-dob">Date of Birth</label>
-                            <input type="date" id="regis-mem2-dob" name="m2BD">
+                            <input type="text" id="regis-mem2-dob" placeholder="yyyy-mm-dd" name="m2BD">
                         </div>
                         <div class="rows">
                             <label for="mem1-cob">City of Birth</label>
                             <input type="text" id="regis-mem2-cob" name="m2CB" placeholder="City of Birth">
                             <label for="mem1-grade">School Grade</label>
-                            <input type="text" id="regis-mem2-grade" name="m2SG" placeholder="School Grade">
+                            <select class="select-custom" name="m2SG">
+                                <option value="">School Grade:</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
                         </div>
                         <div class="rows">
                             <label for="mem1-address">Address</label>
@@ -290,7 +306,7 @@ if (isset($_SESSION['login_team']))
                         <div class="rows">
                             <label for="mem1-phone">Phone Number</label>
                             <input type="text" id="regis-mem2-phone" name="m2WA" placeholder="Phone Number">
-                            <label for="mem1-studid">Student ID - Card (.jpg/jpeg, .png)</label>
+                            <label for="mem1-studid">Student ID - Card<br/>(.jpg/jpeg, .png, .pdf)</label>
                             <input type="file" id="regis-mem2-studid" name="m2SC">
                         </div>
                         <div class="rows">
