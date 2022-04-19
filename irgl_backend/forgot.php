@@ -55,6 +55,7 @@ function kirimEmail($to, $subject, $message, $from)
                         if ($_SERVER['REQUEST_METHOD'] == 'POST')
                         {
                             $forgot = trim($_POST['forgot']);
+                            $leader = trim($_POST['leader']);
                             $cek_captcha = verifikasiCaptcha($_POST['g-recaptcha-response'], $recaptcha_sck);
 
                             if (!$cek_captcha)
@@ -62,19 +63,22 @@ function kirimEmail($to, $subject, $message, $from)
                             else
                             {
                                 // Output emailnya nanti berupa array
-                                $sql_tim = 
-                                'SELECT 
+                                $sql_tim =
+                                'SELECT	
                                     mt.id team_id, 
                                     mt.name,
                                     CONCAT(\'["\', GROUP_CONCAT(DISTINCT mp.email SEPARATOR \'","\'), \'"]\') email
                                 FROM `2022_main_teams` mt
                                     INNER JOIN `2022_main_participants` mp
                                         ON mt.id = mp.team_id
-                                    WHERE mt.name = :name
-                                GROUP BY email AND mt.name';
+                                    INNER JOIN `2022_main_participants` mp2
+                                        ON mt.leader_id = mp2.id
+                                WHERE mt.name = :name AND mp2.name = :leader
+                                    GROUP BY mp.email  AND mt.name';
 
                                 $check_tim = $pdo->prepare($sql_tim);
                                 $check_tim->bindParam(':name', $forgot);
+                                $check_tim->bindParam(':leader', $leader);
                                 $check_tim->execute();
 
                                 if ($check_tim->rowCount() > 0)
@@ -88,12 +92,12 @@ function kirimEmail($to, $subject, $message, $from)
                                     // Detail Email
                                     $ua             = $_SERVER['HTTP_USER_AGENT'];
                                     $tanggal_kirim  = date('Y-m-d H:i:s');
-                                    $tanggal_ex     = date('Y-m-d H:i:s', strtotime($tanggal_kirim) + 1800); // Setengah jam dari waktu kirim email
+                                    $tanggal_ex     = date('Y-m-d H:i:s', strtotime($tanggal_kirim) + 3600); // Satu jam dari waktu kirim email
 
 
                                     // Konten Email Yang Mau Dikirim
                                     $title_email = 'IRGL 2022 - Petra';
-                                    $from_email  = '';
+                                    $from_email  = 'irglukp@andsp.id';
                                     $subject     = 'Someone requests to reset your team password.';
                                     $message     = 
                                     '
@@ -128,7 +132,7 @@ function kirimEmail($to, $subject, $message, $from)
                                     $mail->SMTPSecure   = 'ssl';
                                     $mail->SMTPAuth     = true;
                                     $mail->Username     = $from_email;
-                                    $mail->Password     = "";
+                                    $mail->Password     = "SacredExcalibur";
 
                                     $mail->setFrom($from_email, $title_email);
                                     $mail->addReplyTo($from_email, $title_email);
@@ -162,7 +166,7 @@ function kirimEmail($to, $subject, $message, $from)
                                     }
                                 }
                                 else
-                                    $msg = '<div class="alert alert-danger">The team is not registered.</div>';
+                                    $msg = '<div class="alert alert-danger">The team or leader name is not registered.</div>';
                             }
                         }
                 ?>
@@ -186,8 +190,10 @@ function kirimEmail($to, $subject, $message, $from)
                     if (isset($msg))
                         echo $msg;
                 } ?>
+                
 
                 <input type="text" name="forgot" placeholder="Team Name" value="<?=isset($forgot) ? htmlspecialchars($forgot) : ''?>" class="form-control" required /><br/>
+                <input type="text" name="leader" placeholder="Leader Name" value="<?=isset($leader) ? htmlspecialchars($leader) : ''?>" class="form-control" required /><br/>
 
                 <?php break; 
 
@@ -210,8 +216,8 @@ function kirimEmail($to, $subject, $message, $from)
                                 $fetch_token = $check_token->fetch();
                                 $cek_waktu_reset = strtotime($fetch_token['date_of_reset_request']);
 
-                                // Cek apakah melebihi setengah jam dari waktu request pass
-                                if (time() > ($cek_waktu_reset + 1800))
+                                // Cek apakah melebihi satu jam dari waktu request pass
+                                if (time() > ($cek_waktu_reset + 3600))
                                     header('Location: ?');
                                 else
                                 {
