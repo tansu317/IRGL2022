@@ -1,0 +1,224 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@500;600;700&display=swap");
+@font-face {
+    font-family: titleFont;
+    src: url(Cinzel-Bold.otf);
+}
+@font-face {
+    font-family: h1font;
+    src: url(Cinzel-Black.ttf);
+}
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+html{
+    scroll-behavior: smooth;
+}
+/* body{
+    margin: 0 0 0 0;
+    font-family:  h1font;
+    font-size: .938rem;
+    background-color: rgb(22, 39, 28);
+    color: rgb(186, 196, 190);
+} */
+h1{
+    color: rgb(239, 245, 241);
+    font-weight: 600;
+    font-family:  titleFont;
+}
+h3{
+    font-family: titleFont;
+}
+
+img,video{
+    max-width: 100%;
+    height: auto;
+}
+
+/* ------ */
+
+.section{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 80px 100px; */
+
+}
+.section_title{
+    font-size: 1rem;
+    color: rgb(239, 245, 241);
+    text-align: center;
+    text-transform: capitalize;
+    /* margin-bottom: 2rem; */
+}
+
+.container{
+    max-width: 968px;
+    /* margin-left: 1rem;
+    margin-right: 1rem; */
+}
+.grid{
+    display: grid;
+    /* gap : 1.5rem */
+}
+
+/* ----------- */
+
+/* .home_img{} */
+.home_container{
+    position: relative;
+    /* height: calc(100vh - 3rem); */
+    align-content:center;
+    /* row-gap: 3rem; */
+    /* margin-left: 200px */
+}
+
+.home_content-subtitle,
+.home_content-title{
+    color: #fff;
+    
+}
+.home_content-subtitle{
+    display: block;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: .75rem;
+}
+.home_content-title{
+    font-size: 4rem;
+    font-weight: 500;
+    margin-bottom: 2.5rem;
+}
+.animation{
+    position: absolute;
+    justify-content: center;
+    display: flex;
+    bottom: 1px;
+    width: 170%;
+    height: 200%;
+}
+
+.about_container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-bottom: 50px;
+}
+.about_content{
+    position: relative;
+    padding-bottom: 10rem;
+    width: 1150px;
+    display: flex;
+    left: 300px;
+    justify-content: center;
+    align-items: center;
+}
+.about_content .image{
+    position: relative;
+    /* right: 1%; */
+    width: 500px;
+    height: 500px;
+    overflow: hidden;
+
+}
+.about_content .image img{
+    z-index: 111;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+.about_content .text-box{
+    z-index: 222;
+    background-color: rgba(255,255,255,0.1);
+    backdrop-filter: blur(20px);
+    padding: 40px;
+    max-width: 600px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    transform: translate(-80px,50px);
+    
+}
+.about_content .text-box .h3{
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+ /* VIDEO */
+ .video_container{
+     padding-bottom: 2rem;
+ }
+
+ .video_description{
+     text-align: center;
+     padding-left: 400px;
+     margin-bottom: 2.5rem;
+ }
+ .video_content{
+     position: relative;
+     left: 200px;
+     border-radius: 10px;
+ }
+
+ .video_button{
+     position: absolute;
+     right: 1rem;
+     bottom: -1rem;
+     padding: 1rem 1.5rem;
+ }
+ .video_button-icon{
+     font-size: 1.2rem;
+ }
+/* @media screen and(min-width : 769px){
+    .body{
+        margin : 0;
+    }
+    .section{
+        padding: 7rem 0 2rem;
+    }
+    .home_container{
+        height: 100vh;
+        grid-template-rows: 1.8fr .5fr;
+    }
+    .home_content{
+        align-self: flex-end;
+    }
+    
+}
+@media screen and(min-width : 1024){
+    .container{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .home_container{
+        grid-template-rows: 2fr .5fr;
+    }
+    
+}
+
+@media screen and(min-width : 1200px){
+    .container{
+        max-width: 1024px;
+    }
+    
+}
+
+@media screen and(min-width : 721px){
+    .body{
+        margin : 0;
+    }
+    .section{
+        padding: 7rem 0 2rem;
+    }
+    .home_container{
+        height: 640px;
+    }
+     */
+/* } */

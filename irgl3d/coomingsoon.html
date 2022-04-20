@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .animasi-teks {
+        font-size: 29px;
+        width: 100%;
+        white-space:nowrap;
+        overflow:hidden;
+        -webkit-animation: typing 5s steps(70, end);
+        animation: animasi-ketik 5s steps(70, end);
+        }
+
+        @keyframes animasi-ketik{
+        from { width: 0; }
+        }
+
+        @-webkit-keyframes animasi-ketik{
+        from { width: 0; }
+        }
+
+        a{
+            text-decoration: none;
+            color: black;
+        }
+
+        .container-select{
+            position: absolute;
+            bottom: 0;
+            right: 0vh;
+            color: #fff;
+            font-weight: bold;
+            height: 100vh;
+            width: 100vh;;
+            text-align: center;
+            font-size: 6vh;
+        }
+
+        .select-game{
+            position: absolute;
+            bottom: 40vh;
+            right: 60vh;
+            width: 100%;
+        }
+
+        .select-game a{
+            cursor: pointer;
+            padding: 8px 30px;
+            display: inline-block;
+            text-shadow: 2px 2px 0px rgba(34, 46, 36);
+            color: black
+        }
+
+        .select-game a:hover{
+            background-color: #adad79;
+            border-radius: 30px 0 30px 0;
+            text-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="animasi-teks">Hallo, selamat datang.....</div>
+        <div class="container-select">
+            <div class="select-game">
+                <div class="pre-elim">
+                    <a>Pre Elimination Game</a>
+                </div>
+                <div class="elim">
+                    <a href="./penyisihan/index.php">Elimination Game</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+   
+    
+</body>
+</html>

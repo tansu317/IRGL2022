@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- main css -->
+		<link rel="stylesheet" href="./assets/style.css">
+
+        <!-- css timeline -->
+        <link rel="stylesheet" href="./assets/styleTimeline.css">
+
+        <link rel="stylesheet" href="./assets/story.css">
+
+        <link rel="stylesheet" href="./assets/aboutus.css">
+
+		<script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/func.js"></script>
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+        <script src="./js/ui.js" defer></script>
+
+       
+    
+		<title>Document</title>
+		
+	</head>
+
+	<body style="width: 100vw; height: 100vh; overflow: hidden">
+
+		<div id="irgl-section">
+
+			<canvas class="webgl" data-engine="three.js r136" width="1920" height="893" style="touch-action: none; user-select: none;"> </canvas>
+			<script type="module" src="./js/main.js"></script>
+			<div class="dimmer"></div>
+			
+			<div class="index-section">
+                <div class="logo">
+                    <img src="./assets/Logo UKP.png" alt="ukp" class="gambar">
+                    <img src="./assets/logo prodi baru no bg.png" alt="" class="gambar">
+                    <img src="./assets/IRGL.png" alt="" class="gambar">
+                </div>
+
+				<div class="title-description">
+					THE LOST KINGDOM: ODYSSEY OF THE SACRED EXCALIBUR
+				</div>
+
+
+				<div class="menu-cont-wrapper">
+					<div class="menu-container">
+						<div class="login">
+							<!-- <a onclick="goToPage('.index-section', 'login')" id="login">LOGIN</a> -->
+							<a data-toggle="modal" data-hide=".index-section" data-target="#loginModal" id="login">LOGIN</a>
+						</div>
+						<div class="register">
+							<a  data-toggle="modal" data-hide=".index-section" data-target="#registrationModal">REGISTER</a>
+						</div>
+						<div class="settings">
+							<a href="#" data-toggle="modal" data-target="#settingsModal" data-hide=".index-section">SETTINGS</a>
+						</div>
+						<div class="about">
+							<a href="#" data-toggle="modal" data-target="#aboutusModal" data-hide=".index-section" id="about">ABOUT US</a>
+						</div>
+						<div class="time">
+							<a href="#" data-toggle="modal" data-target="#timelineModal" data-hide=".index-section">TIMELINE</a>
+						</div>
+                        <div class="story">
+							<a href="#" data-toggle="modal" data-target="#storylineModal" data-hide=".index-section">STORYLINE</a>
+						</div>
+						<div class="contact">
+							<a href="#" data-toggle="modal" data-target="#contactUsModal" data-hide=".index-section">CONTACT US</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="footer" style="font-size: 15px;">
+					&copy;IT Web IRGL 2022
+				</div>
+			</div>
+
+            <div class="modal" id="loginModal">
+                <form method="post" class="form-login">
+                    <div class="login-form">
+                        <div class="title">
+                            LOGIN
+                        </div>
+        
+                        <div class="content-section">
+                            <label for="team_email"><b>E-mail</b></label>
+                            <input type="email" id="team_email" placeholder="Your Email" name="email"><br>
+        
+                            <label for="password"><b>Team Password</b></label>
+                            <input type="password" id="password" placeholder="Password" name="team_password"><br>
+        
+                            
+                            <div class="captcha" id="reCaptchaLogin" data-sitekey="<?=$recaptcha_stk?>"></div><br/>
+        
+                            <a href="#">Forgot Password?</a><br/><br/>
+        
+                            <button name="">Login Now</button><br/>
+                        </div>
+        
+                        <a data-toggle="modal" data-target=".index-section" data-hide="#loginModal" class="back"><i class="fa fa-arrow-left"></i> Back To Main Menu</a>
+                    </div>
+        
+                    
+                </form>
+            </div>
+    
+		</div>
+    </div>
+
+
+	<div class="modal" data-display="loader">
+		<div class="content">
+			Press anywhere to continue
+		</div>
+	</div>
+
+	<div class="modal" id="registrationModal">
+        <div class="registration-page" id="registration">
+
+            <canvas class="webgl2"></canvas>
+
+            <form method="post" class="form-regist" enctype="multipart/form-data"> 
+                <div class="form-container">
+                    <div class="register-form" id="team_regist">
+
+                        <div class="top-form">
+                            <div class="curr-form-info">
+                                TEAM
+                            </div>
+    
+                            <div class="next-button" onclick="registerNext('#team_regist', '#leader')">
+                                <div class="next-inner">
+                                    NEXT
+                                    <i class="fa fa-arrow-right"></i>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="rows">
+                            <label for="team-name">Team Name</label>
+                            <input type="text" id="team-name" name="teamName" placeholder="Team Name">
+    
+                            <label for="team_pass">Team Password</label>
+                            <input type="password" placeholder="Enter password" id="team_pass" name="pwd">
+                        </div>
+
+                        <div class="rows">
+                            <label for="team-school">School Name</label>
+                            <input type="text" id="team-school" name="schoolName" placeholder="School Name">
+
+                            <label for="">Bukti Transfer (.pdf)</label>
+                            <input type="file" name="buktiTrf" id="buktiTrf"><br/>
+                        </div>
+
+                        <div class="rows"></div>
+                        <div class="rows"></div>
+                        <div class="rows"></div>
+                        <div class="rows"></div>
+                    </div>
+
+
+
+                    <div class="register-form" id="leader" style="display: none;">
+                        <div class="top-form">
+                            <div class="curr-form-info">
+                                LEADER
+                            </div>
+                            <div class="back-button-mem" onclick="registerNext('#leader', '#team_regist')">
+                                <div class="next-inner">
+                                    <i class="fa fa-arrow-left"></i>
+                                    BACK
+                                </div>
+                            </div>
+                            <div class="next-button" onclick="registerNext('#leader', '#member-1')">
+                                <div class="next-inner">
+                                    NEXT
+                                    <i class="fa fa-arrow-right"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rows"> <label for="leader-name">Full Name</label>
+                            <input type="text" id="regis-leader-name" name="leaderName" placeholder="Full Name">
+                            <label for="leader-dob">Date of Birth</label>
+                            <input type="date" id="regis-leader-dob" name="leaderBD">
+                        </div>
+                        <div class="rows"><label for="leader-cob">City of Birth</label>
+                            <input type="text" id="regis-leader-cob" name="leaderCB" placeholder="City of Birth">
+                            <label for="leader-grade">School Grade</label>
+                            <input type="text" id="regis-leader-grade" name="leaderSG" placeholder="School Grade">
+                        </div>
+                        <div class="rows"><label for="leader-address">Address</label>
+                            <input type="text" id="regis-leader-address" name="leaderAdd" placeholder="Address">
+                            <label for="leader-line">LINE ID</label>
+                            <input type="text" id="regis-leader-line" name="leaderLine" placeholder="LINE ID">
+                        </div>
+                        <div class="rows"><label for="leader-phone">Phone Number</label>
+                            <input type="text" id="regis-leader-phone" name="leaderWA" placeholder="Phone Number">
+                            <label for="leader-studid">Student ID - Card (.jpg/jpeg, .png)</label>
+                            <input type="file" id="regis-leader-studid" name="leaderSC">
+                        </div>
+                        <div class="rows">
+                            <label for="leader-email">E-mail</label>
+                            <input type="text" id="regis-leader-email" name="leaderEmail" placeholder="E-mail">
+                        </div>
+
+                    </div>
+
+
+                    <div class="register-form" id="member-1" style="display: none;">
+                        <div class="top-form">
+                            <div class="curr-form-info">
+                                FIRST MEMBER
+                            </div>
+
+                            <div class="back-button-mem" onclick="registerNext('#member-1', '#leader')">
+                                <div class="next-inner">
+                                    <i class="fa fa-arrow-left"></i>
+                                    BACK
+                                </div>
+                            </div>
+                            <div class="next-button" onclick="registerNext('#member-1', '#member-2')">
+                                <div class="next-inner">
+                                    NEXT
+                                    <i class="fa fa-arrow-right"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rows">
+                            <label for="mem1-name">Full Name</label>
+                            <input type="text" id="regis-mem1-name" name="member1" placeholder="Full Name">
+                            <label for="mem1-dob">Date of Birth</label>
+                            <input type="date" id="regis-mem1-dob" name="m1BD">
+                        </div>
+                        <div class="rows">
+                            <label for="mem1-cob">City of Birth</label>
+                            <input type="text" id="regis-mem1-cob" name="m1CB" placeholder="City of Birth">
+                            <label for="mem1-grade">School Grade</label>
+                            <input type="text" id="regis-mem1-grade" name="m1SG" placeholder="School Grade">
+                        </div>
+                        <div class="rows">
+                            <label for="mem1-address">Address</label>
+                            <input type="text" id="regis-mem1-address" name="m1Add" placeholder="Address">
+                            <label for="mem1-line">LINE ID</label>
+                            <input type="text" id="regis-mem1-line" name="m1Line" placeholder="LINE ID">
+                        </div>
+                        <div class="rows">
+                            <label for="mem1-phone">Phone Number</label>
+                            <input type="text" id="regis-mem1-phone" name="m1WA" placeholder="Phone Number">
+                            <label for="mem1-studid">Student ID - Card (.jpg/jpeg, .png)</label>
+                            <input type="file" id="regis-mem1-studid" name="m1SC">
+                        </div>
+                        <div class="rows">
+                            <label for="mem2-phone">E-mail</label>
+                            <input type="text" id="regis-mem1-email" name="m1Email" placeholder="Email Address">
+                        </div>
+                    </div>
+
+
+
+                    <div class="register-form" id="member-2" style="display: none;">
+
+                        <div class="top-form">
+                            <div class="curr-form-info">
+                                SECOND MEMBER
+                            </div>
+                            <div class="back-button-mem" onclick="registerNext('#member-2', '#member-1')">
+                                <div class="next-inner">
+                                    <i class="fa fa-arrow-left"></i>
+                                    BACK
+                                </div>
+                            </div>
+                            <div class="next-button" onclick="registerNext('#member-2', '#verifCaptcha')">
+                                <div class="next-inner">
+                                    NEXT
+                                    <i class="fa fa-arrow-right"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rows">
+                            <label for="mem1-name">Full Name</label>
+                            <input type="text" id="regis-mem2-name" name="member2" placeholder="Full Name">
+                            <label for="mem1-dob">Date of Birth</label>
+                            <input type="date" id="regis-mem2-dob" name="m2BD">
+                        </div>
+                        <div class="rows">
+                            <label for="mem1-cob">City of Birth</label>
+                            <input type="text" id="regis-mem2-cob" name="m2CB" placeholder="City of Birth">
+                            <label for="mem1-grade">School Grade</label>
+                            <input type="text" id="regis-mem2-grade" name="m2SG" placeholder="School Grade">
+                        </div>
+                        <div class="rows">
+                            <label for="mem1-address">Address</label>
+                            <input type="text" id="regis-mem2-address" name="m2Add" placeholder="Address">
+                            <label for="mem1-line">LINE ID</label>
+                            <input type="text" id="regis-mem2-line" name="m2Line" placeholder="LINE ID">
+                        </div>
+                        <div class="rows">
+                            <label for="mem1-phone">Phone Number</label>
+                            <input type="text" id="regis-mem2-phone" name="m2WA" placeholder="Phone Number">
+                            <label for="mem1-studid">Student ID - Card (.jpg/jpeg, .png)</label>
+                            <input type="file" id="regis-mem2-studid" name="m2SC">
+                        </div>
+                        <div class="rows">
+                            <label for="mem2-phone">E-mail</label>
+                            <input type="text" id="regis-mem2-email" name="m2Email" placeholder="Email Address">
+                        </div>
+                    </div>
+
+                    <div class="register-form" id="verifCaptcha" style="display: none;">
+
+                        <div class="top-form">
+                            <div class="curr-form-info">
+                                VERIFICATION
+                            </div>
+                            <div class="back-button-mem" onclick="registerNext('#verifCaptcha', '#member-2')">
+                                <div class="next-inner">
+                                    <i class="fa fa-arrow-left"></i>
+                                    BACK
+                                </div>
+                            </div>
+                            <div class="submit-button-container">
+                                <button class="submit-form">
+                                    SUBMIT
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="rows">
+                            <label for="mem2-captcha">Captcha Verification</label>
+                            <div class="captcha" id="reCaptchaRegister" data-sitekey="<?=$recaptcha_stk?>"></div><br/>
+                        </div>
+                        <div class="rows"></div>
+                        <div class="rows"></div>
+                        <div class="rows"></div>
+                        <div class="rows"></div>
+                    </div>
+            </form>
+        </div>
+
+            <div class="back-button" id="back" data-toggle="modal" data-target=".index-section"
+                data-hide="#registrationModal">
+                <i class=" fa fa-arrow-left"></i>
+                &nbsp; Back to Main Menu
+            </div>
+
+        </div>
+    </div>
+    <div class="modal" id="registrationModal">
+        <div class="registration-page" id="registration">
+
+            <canvas class="webgl2"></canvas>
+
+            <form method="post" class="form-regist" enctype="multipart/form-data"> 
+                <div class="form-container">
+                    <div class="register-form" id="team_regist">
+
+                        <div class="top-form">
+                            <div class="curr-form-info">
+                                TEAM
+                            </div>
+    
+                            <div class="next-button" onclick="registerNext('#team_regist', '#leader')">
+                                <div class="next-inner">
+                                    NEXT
+                                    <i class="fa fa-arrow-right"></i>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="rows">
+                            <label for="team-name">Team Name</label>
+                            <input type="text" id="team-name" name="teamName" placeholder="Team Name">
+    
+                            <label for="team_pass">Team Password</label>
+                            <input type="password" placeholder="Enter password" id="team_pass" name="pwd">
+                        </div>
+
+                        <div class="rows">
+                            <label for="team-school">School Name</label>
+                            <input type="text" id="team-school" name="schoolName" placeholder="School Name">
+
+                            <label for="">Bukti Transfer (.pdf)</label>
+                            <input type="file" name="buktiTrf" id="buktiTrf"><br/>
+                        </div>
+
+                        <div class="rows"></div>
+                        <div class="rows"></div>
+                        <div class="rows"></div>
+                        <div class="rows"></div>
+                    </div>
+
+
+
+                    <div class="register-form" id="leader" style="display: none;">
+                        <div class="top-form">
+                            <div class="curr-form-info">
+                                LEADER
+                            </div>
+                            <div class="back-button-mem" onclick="registerNext('#leader', '#team_regist')">
+                                <div class="next-inner">
+                                    <i class="fa fa-arrow-left"></i>
+                                    BACK
+                                </div>
+                            </div>
+                            <div class="next-button" onclick="registerNext('#leader', '#member-1')">
+                                <div class="next-inner">
+                                    NEXT
+                                    <i class="fa fa-arrow-right"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rows"> <label for="leader-name">Full Name</label>
+                            <input type="text" id="regis-leader-name" name="leaderName" placeholder="Full Name">
+                            <label for="leader-dob">Date of Birth</label>
+                            <input type="date" id="regis-leader-dob" name="leaderBD">
+                        </div>
+                        <div class="rows"><label for="leader-cob">City of Birth</label>
+                            <input type="text" id="regis-leader-cob" name="leaderCB" placeholder="City of Birth">
+                            <label for="leader-grade">School Grade</label>
+                            <input type="text" id="regis-leader-grade" name="leaderSG" placeholder="School Grade">
+                        </div>
+                        <div class="rows"><label for="leader-address">Address</label>
+                            <input type="text" id="regis-leader-address" name="leaderAdd" placeholder="Address">
+                            <label for="leader-line">LINE ID</label>
+                            <input type="text" id="regis-leader-line" name="leaderLine" placeholder="LINE ID">
+                        </div>
+                        <div class="rows"><label for="leader-phone">Phone Number</label>
+                            <input type="text" id="regis-leader-phone" name="leaderWA" placeholder="Phone Number">
+                            <label for="leader-studid">Student ID - Card (.jpg/jpeg, .png)</label>
+                            <input type="file" id="regis-leader-studid" name="leaderSC">
+                        </div>
+                        <div class="rows">
+                            <label for="leader-email">E-mail</label>
+                            <input type="text" id="regis-leader-email" name="leaderEmail" placeholder="E-mail">
+                        </div>
+
+                    </div>
+
+
+                    <div class="register-form" id="member-1" style="display: none;">
+                        <div class="top-form">
+                            <div class="curr-form-info">
+                                FIRST MEMBER
+                            </div>
+
+                            <div class="back-button-mem" onclick="registerNext('#member-1', '#leader')">
+                                <div class="next-inner">
+                                    <i class="fa fa-arrow-left"></i>
+                                    BACK
+                                </div>
+                            </div>
+                            <div class="next-button" onclick="registerNext('#member-1', '#member-2')">
+                                <div class="next-inner">
+                                    NEXT
+                                    <i class="fa fa-arrow-right"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rows">
+                            <label for="mem1-name">Full Name</label>
+                            <input type="text" id="regis-mem1-name" name="member1" placeholder="Full Name">
+                            <label for="mem1-dob">Date of Birth</label>
+                            <input type="date" id="regis-mem1-dob" name="m1BD">
+                        </div>
+                        <div class="rows">
+                            <label for="mem1-cob">City of Birth</label>
+                            <input type="text" id="regis-mem1-cob" name="m1CB" placeholder="City of Birth">
+                            <label for="mem1-grade">School Grade</label>
+                            <input type="text" id="regis-mem1-grade" name="m1SG" placeholder="School Grade">
+                        </div>
+                        <div class="rows">
+                            <label for="mem1-address">Address</label>
+                            <input type="text" id="regis-mem1-address" name="m1Add" placeholder="Address">
+                            <label for="mem1-line">LINE ID</label>
+                            <input type="text" id="regis-mem1-line" name="m1Line" placeholder="LINE ID">
+                        </div>
+                        <div class="rows">
+                            <label for="mem1-phone">Phone Number</label>
+                            <input type="text" id="regis-mem1-phone" name="m1WA" placeholder="Phone Number">
+                            <label for="mem1-studid">Student ID - Card (.jpg/jpeg, .png)</label>
+                            <input type="file" id="regis-mem1-studid" name="m1SC">
+                        </div>
+                        <div class="rows">
+                            <label for="mem2-phone">E-mail</label>
+                            <input type="text" id="regis-mem1-email" name="m1Email" placeholder="Email Address">
+                        </div>
+                    </div>
+
+
+
+                    <div class="register-form" id="member-2" style="display: none;">
+
+                        <div class="top-form">
+                            <div class="curr-form-info">
+                                SECOND MEMBER
+                            </div>
+                            <div class="back-button-mem" onclick="registerNext('#member-2', '#member-1')">
+                                <div class="next-inner">
+                                    <i class="fa fa-arrow-left"></i>
+                                    BACK
+                                </div>
+                            </div>
+                            <div class="next-button" onclick="registerNext('#member-2', '#verifCaptcha')">
+                                <div class="next-inner">
+                                    NEXT
+                                    <i class="fa fa-arrow-right"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rows">
+                            <label for="mem1-name">Full Name</label>
+                            <input type="text" id="regis-mem2-name" name="member2" placeholder="Full Name">
+                            <label for="mem1-dob">Date of Birth</label>
+                            <input type="date" id="regis-mem2-dob" name="m2BD">
+                        </div>
+                        <div class="rows">
+                            <label for="mem1-cob">City of Birth</label>
+                            <input type="text" id="regis-mem2-cob" name="m2CB" placeholder="City of Birth">
+                            <label for="mem1-grade">School Grade</label>
+                            <input type="text" id="regis-mem2-grade" name="m2SG" placeholder="School Grade">
+                        </div>
+                        <div class="rows">
+                            <label for="mem1-address">Address</label>
+                            <input type="text" id="regis-mem2-address" name="m2Add" placeholder="Address">
+                            <label for="mem1-line">LINE ID</label>
+                            <input type="text" id="regis-mem2-line" name="m2Line" placeholder="LINE ID">
+                        </div>
+                        <div class="rows">
+                            <label for="mem1-phone">Phone Number</label>
+                            <input type="text" id="regis-mem2-phone" name="m2WA" placeholder="Phone Number">
+                            <label for="mem1-studid">Student ID - Card (.jpg/jpeg, .png)</label>
+                            <input type="file" id="regis-mem2-studid" name="m2SC">
+                        </div>
+                        <div class="rows">
+                            <label for="mem2-phone">E-mail</label>
+                            <input type="text" id="regis-mem2-email" name="m2Email" placeholder="Email Address">
+                        </div>
+                    </div>
+
+                    <div class="register-form" id="verifCaptcha" style="display: none;">
+
+                        <div class="top-form">
+                            <div class="curr-form-info">
+                                VERIFICATION
+                            </div>
+                            <div class="back-button-mem" onclick="registerNext('#verifCaptcha', '#member-2')">
+                                <div class="next-inner">
+                                    <i class="fa fa-arrow-left"></i>
+                                    BACK
+                                </div>
+                            </div>
+                            <div class="submit-button-container">
+                                <button class="submit-form">
+                                    SUBMIT
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="rows">
+                            <label for="mem2-captcha">Captcha Verification</label>
+                            <div class="captcha" id="reCaptchaRegister" data-sitekey="<?=$recaptcha_stk?>"></div><br/>
+                        </div>
+                        <div class="rows"></div>
+                        <div class="rows"></div>
+                        <div class="rows"></div>
+                        <div class="rows"></div>
+                    </div>
+            </form>
+        </div>
+
+            <div class="back-button" id="back" data-toggle="modal" data-target=".index-section"
+                data-hide="#registrationModal">
+                <i class=" fa fa-arrow-left"></i>
+                &nbsp; Back to Main Menu
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+	<div class="modal" id="settingsModal">
+		<div class="box-center">
+			<div class="centered">
+				<div class="box-left">
+					<img src="./assets/excalibur.png" alt="excalibur" class="object1" />
+					<img src="./assets/excalibur.png" alt="excalibur" class="object2" />
+				</div>
+				<div class="box-right settings">
+					<div class="title">
+						<h2>Settings</h2>
+					</div>
+
+					<div class="content">
+						<div class="box-layout">
+							<div class="icon rotateFull">
+								<i class="faicon fas fa-sun" id="darkModeClick"></i>
+							</div>
+							<div class="set">
+								Dark Mode<br/>
+								<div class="status">
+									<select class="select-custom" id="darkModeSelect">
+										<option selected>OFF</option>
+										<option>ON</option>
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="box-layout">
+							<div class="icon rotateV">
+								<i class="faicon fas fa-volume" id="volumeClick"></i>
+							</div>
+							<div class="set">
+								Volume<br/>
+								<div class="status">
+									<select class="select-custom" id="volumeSelect">
+										<option value="0">Low</option>
+										<option value="1" selected>Default</option>
+										<option value="2">High</option>
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="box-layout">
+							<div class="icon rotateC">
+								<i class="faicon fas fa-music" id="musicSoundClick"></i>
+							</div>
+							<div class="set">
+								Music &  Sound<br/>
+								<div class="status">
+									<select id="musicSoundSelect" class="select-custom">
+										<option>OFF</option>
+										<option selected>ON</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="save-section">
+						<button data-toggle="modal" data-target=".index-section" data-hide="#settingsModal">&laquo; Back to main menu</button> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="modal"id="contactUsModal">
+		<div class="box-center">
+			<div class="centered">
+				<div class="box-left">
+
+					<div class="contact_us">
+						<img src="./castle.png" alt="Castle" width="380" />
+					</div>
+				</div>
+				
+				<div class="box-right settings">
+					<div class="title">
+						<h2>Contact Us</h2>
+					</div>
+
+					<div class="content">
+						<div class="box-layout">
+							<div class="icon rotate">
+								<i class="faicon fab fa-instagram" id="darkModeClick"></i>
+							</div>
+							<div class="set">
+								Instagram
+								<a href="//www.instagram.com/irglpetra2022" target="_blank" class="status">irglpetra2022</a>
+							</div>
+						</div>
+
+						<div class="box-layout">
+							<div class="icon rotate">
+								<i class="faicon fab fa-line"></i>
+							</div>
+							<div class="set">
+								Line
+								<a href="https://line.me/R/ti/p/@462mqnpg" target="_blank"  class="status">@462mqnpg</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="save-section">
+						<button data-toggle="modal" data-target=".index-section" data-hide="#contactUsModal">&laquo; Back to main menu</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <div class="modal"id="timelineModal">
+		<div class="box-center">
+			<div class="centered">
+				<div class="box-left">	
+					<img src="./assets/excalibur.png" alt="excalibur" class="object3"/>
+                    <img src="./assets/excalibur.png" alt="excalibur" class="object4"/>
+				</div>
+				
+				<div class="box-right settings">
+					<div class="title">
+						<h2>Timeline IRGL 2022</h2>
+                        
+					</div>
+                   
+					<div class="content">
+						<div class="box-layout">
+                            <a class="kedip">Click the point to see more</a>
+							<section class="timeline">
+                               
+                                <div class="timeline-line">
+                                    <span class="timeline-innerline"></span>
+                                </div>
+                               
+                                
+                                <ul>
+                                    <li>
+                                        <span class="date">25 April - 11 June</span>
+                                        <span class="timeline-point"></span>
+                                        <p style="width: 230px; height: 515px;" >Open Registration Batch I (Early Bird)</p>
+                                    </li>
+                        
+                                    <li>
+                                        <span class="timeline-point"></span>
+                                        <span class="date">12 June - 15 Juli</span>
+                                        <p style="width: 230px; height: 515px;">Open Registration Batch II (Normal)</p>
+                                    </li>
+                        
+                                    <li>
+                                        <span class="timeline-point"></span>
+                                        <span class="date">31 Juli</span>
+                                        <p style="width: 230px; height: 515px;">Technical Meeting</p>
+                                    </li>
+                        
+                                    <li>
+                                        <span class="timeline-point"></span>
+                                        <span class="date">1 August</span>
+                                        <p style="width: 230px; height: 515px;">Pre Elimination Stage</p>
+                                    </li>
+                        
+                                    <li>
+                                        <span class="timeline-point"></span>
+                                        <span class="date">6 August</span>
+                                        <p style="width: 230px; height: 515px;">Elimination Stage</p>
+                                    </li>
+
+                                    <li>
+                                        <span class="timeline-point"></span>
+                                        <span class="date">7 August</span>
+                                        <p style="width: 230px; height: 515px;">Semi-Final Stage</p>
+                                    </li>
+
+                                    <li>
+                                        <span class="timeline-point"></span>
+                                        <span class="date">13 August</span>
+                                        <p style="width: 230px; height: 515px;">Final Stage</p>
+                                    </li>
+                                </ul>
+                               
+                            </section>
+						</div>
+					</div>
+
+					<div class="save-section">
+						<button data-toggle="modal" data-target=".index-section" data-hide="#timelineModal">&laquo; Back to main menu</button>
+                        
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <div class="modal"id="storylineModal">
+		<div class="box-center">
+			<div class="centered" style="top: 250px;">
+				
+				<div class="box-right settings" >
+					<div class="title" style="position: fixed;">
+						<h2>STORYLINE IRGL 2022</h2> 
+					</div>
+                   
+					<div class="content">
+						<div class="box-layout">
+                            <div class="workspace">
+                                <button class="btn modal-btn" id="play-btn" type="button">
+                                    <img src="./assets/playButton.png" alt="playButton" style="width: 10px; height: auto;" >
+                                </button>
+                            </div>
+						</div>
+					</div>
+                
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal-video">
+                
+                        <!-- The Close Button -->
+                        <span class="close" id="closeStory">&times;</span>
+                
+                        <!-- Modal Content (The video) -->
+                
+                    </div>
+
+					<!-- <div class="save-section" style="position: fixed; left: 10px; bottom: 10px;">
+						<button data-toggle="modal" data-target=".index-section" data-hide="#timelineModal">&laquo; Back to main menu</button>  
+					</div> -->
+				</div>
+
+                <div class="alert alert-secondary alert-dismissible fade show" id="info"> 
+                    <div class="save-section">
+                        <button data-toggle="modal" data-target=".index-section" data-hide="#storylineModal">&laquo; Back to main menu</button>
+                    </div>      
+                    <h5 style="font-size: 1em; color: black;">&plus;<strong>Zoom</strong> to get closer&minus;</h5>
+                </div>
+			</div>
+		</div>
+	</div>
+
+    
+    <div class="modal"id="aboutusModal">
+		<div class="box-center">
+			<div class="centered">
+				<div class="box-left">	
+					<img src="./assets/excalibur.png" alt="excalibur" class="object3"/>
+                    <img src="./assets/excalibur.png" alt="excalibur" class="object4"/>
+				</div>
+				
+				<div class="box-right settings">
+					<div class="title">
+						<h2>Timeline IRGL 2022</h2>
+                        
+					</div>
+                   
+					<div class="content">
+						<div class="box-layout">
+                            <section class="home">
+      
+                                <div class="home_container container grid">
+                                    <div class="home_content">
+                                         <!-- <div class="animation">
+                                            <lottie-player src="aboutus.json"  background="transparent"  speed="1"   autoplay ></lottie-player>
+                                        </div>  -->
+                                        <span class="home_content-subtitle">
+                                            About us
+                                        </span>
+                                        <h1 class="home_content-title">
+                                            INFORMATICS <br> RALLY <b>GAMES <br> & LOGIC </b>
+                                        </h1>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="about">
+                                <div class="about_container container grid">
+                                    <div class="about_content">
+                                        <div class="image">
+                                            <img src="assets/IRGL.png" alt="">
+                                        </div>
+                                        <div class="text-box">
+                                            <h3>IRGL <br> (Informatics Rally Games and Logic) </h3>
+                                            <p>is an annual competition for high school students
+                                                held by students of the Petra Christian University Informatics Study Program.
+                                                Carrying the concept of rally games, participants will solve logic and
+                                                 math and play a variety of games that are presented to achieve the title of champion. <br>
+                                                 <br>
+                                                 This year, IRGL carries the theme
+                                                 "The Lost Kingdom: Odyssey of the Sacred Excalibur."
+                                                 Tells the story of a legendary sword belonging to a long lost kingdom.
+                                                  The person who can find and successfully draw the sword will get
+                                                  the power to restore the lost kingdom. Many people try
+                                                  searched for the sword, but nothing worked because of the sword
+                                                   hidden in the wilderness that holds many challenges and mysteries.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        
+                            <section class="video_section">
+                                <h2 class="section_title">
+                                    Sneak Peak video
+                                </h2>
+                                <div class="video_container container">
+                                    <!-- <p class="video_description">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, eius cum? Voluptatibus esse natus labore non sequi quod laboriosam maiores iusto. Quibusdam doloremque vitae culpa provident voluptates libero distinctio ipsum.
+                                    </p> -->
+                                    <div class="video_content">
+                                        <video id="video-file">
+                                            <source src="assets/WhatsApp Video 2022-03-15 at 20.56.12.mp4" type="video/mp4">
+                                        </video>
+                        
+                                        <button class="buttin button--flex video_button" id="video-button">
+                                            <i class="ri-play-line video_button-icon" id="video-icon"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </section>
+						</div>
+					</div>
+
+					<div class="save-section">
+						<button data-toggle="modal" data-target=".index-section" data-hide="#aboutusModal">&laquo; Back to main menu</button>
+                        
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+		<script>
+
+			$(function() 
+			{
+				let sword;
+				let moveMouse = true;
+				
+				// window.init3D();
+				// window.animate3D();
+				changeStyleWebGl();
+			});
+
+            $(document).ready(function(){
+                zoom();
+                modal();
+            });
+
+            function zoom() {
+                const zoomElement = document.querySelector(".workspace");
+                let zoom = 1;
+                const ZOOM_SPEED = 1;
+            
+                document.addEventListener("wheel", function (e) {
+                if (e.deltaY > 0) {
+                    zoomElement.style.transform = `scale(${(zoom += ZOOM_SPEED)})`;
+                } else {
+                    if(zoom > 1){       //prevent zoom out out of frame
+                        zoomElement.style.transform = `scale(${(zoom -= ZOOM_SPEED)})`;
+                    }
+                }
+                });
+            }
+
+            function modal(){
+                // Get the modal
+                var modal = document.getElementById("myModal");
+
+                $(".modal-btn").click(function () {
+                    $("#myModal").append("<iframe class='modal-content' id='video' width='80%' height='80%' src='https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>");
+                    modal.style.display = "block";
+                });
+
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function () {
+                    $("#video").remove();
+                    modal.style.display = "none";
+                }
+            }
+		</script>
+	</body>
+</html>
