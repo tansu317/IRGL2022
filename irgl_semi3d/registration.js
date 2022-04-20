@@ -64,15 +64,21 @@ const camera2 = new THREE.PerspectiveCamera(45, window.innerWidth / window.inner
 camera2.position.set(0, 1, 20);
 // camera2.lookAt(0, 0, 0);
 
-// const light = new THREE.PointLight(0xffffff, 15, 100);
-// light.position.set(0, 7, 11);
+const light = new THREE.PointLight(0xffffff, 60, 100);
+light.position.set(0, 3, 11);
 
 // const pointLightHelper = new THREE.PointLightHelper(light, 1);
-// scene.add(pointLightHelper);
+// scene2.add(pointLightHelper);
 
-const spotLight2 = new THREE.SpotLight(0xffffff, 1000);
-spotLight2.position.set(0, 8, 0);
-spotLight2.angle = Math.PI / 2;
+const light2 = new THREE.PointLight(0xffffff, 60, 100);
+light2.position.set(0, 3, -11);
+
+// const pointLightHelper2 = new THREE.PointLightHelper(light2, 1);
+// scene2.add(pointLightHelper2);
+
+// const spotLight2 = neCw THREE.SpotLight(0xffffff, 1000);
+// spotLight2.position.set(0, 8, 0);
+// spotLight2.angle = Math.PI / 2;
 
 // spotLight.castShadow = true;
 
@@ -83,9 +89,10 @@ spotLight2.angle = Math.PI / 2;
 // spotLight.shadow.camera.far = 4000;
 // spotLight.shadow.camera.fov = 30;
 
-scene2.add(spotLight2);
+// scene2.add(spotLight2);
 scene2.add(camera2);
-// scene.add(light);
+scene2.add(light);
+scene2.add(light2);
 
 // when window is resized
 function resizeSceneToFit2() {

@@ -62,7 +62,8 @@ a {
     color: #fff;
     font-weight: bold;
     height: 100vh;
-    width: 100vh;;
+    width: 100vh;
+    ;
     text-align: right;
     font-size: 6vh;
 }
@@ -71,7 +72,8 @@ a {
     position: absolute;
     bottom: 6vh;
     right: 0;
-    width: 100%;;
+    width: 100%;
+    ;
 }
 
 .menu-container a {
@@ -180,7 +182,8 @@ a {
 
 .modal[data-display=loader] {
     display: block;
-    background-color: rgb(62, 82, 84);;
+    background-color: rgb(62, 82, 84);
+    ;
 }
 
 .modal[data-display=loader] .content {
@@ -208,6 +211,7 @@ a {
     width: 100%;
     max-width: 1120px;
 }
+
 .modal .box-left {
     position: relative;
     float: left;
@@ -220,7 +224,7 @@ a {
     position: absolute;
     top: 22px;
     right: 70px;
-    width: 120px;   
+    width: 120px;
     transform: rotate(131deg);
     animation: animateObject1 2s;
 }
@@ -235,13 +239,25 @@ a {
 }
 
 @keyframes animateObject2 {
-    0% {transform: rotate(-192deg);top: 22px;}
-    100% {transform: rotate(-150deg);top: 0;}
+    0% {
+        transform: rotate(-192deg);
+        top: 22px;
+    }
+
+    100% {
+        transform: rotate(-150deg);
+        top: 0;
+    }
 }
 
 @keyframes animateObject1 {
-    0% {transform: rotate(170deg)}
-    100% {transform: rotate(131deg)}
+    0% {
+        transform: rotate(170deg)
+    }
+
+    100% {
+        transform: rotate(131deg)
+    }
 }
 
 .modal .box-right {
@@ -284,6 +300,7 @@ a {
         width: 100%;
         transform: translate(0, -50%);
     }
+
     .modal .box-right {
         margin: 0;
     }
@@ -294,13 +311,13 @@ a {
 }
 
 .modal .box-right.settings .content::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 .modal .box-right.settings .content::-webkit-scrollbar-thumb {
     background-color: #fff;
     border: 1px solid #999
-}            
+}
 
 .modal .box-right.settings {
     height: 450px;
@@ -319,8 +336,9 @@ a {
     margin: 0 -15px;
     text-transform: uppercase;
     border-bottom: 1px solid #888;
-    
+
 }
+
 .modal .box-right .title h2 {
     padding: 0 20px;
     margin: 0;
@@ -425,7 +443,7 @@ a {
 .webgl2 {
     position: absolute;
     height: 100vh !important;
-    width: 50vw !important;
+    width: 100vw !important;
     top: 0;
     left: 0;
     z-index: 1;
@@ -506,7 +524,8 @@ a {
     align-items: center;
 }
 
-.top-form .next-button, .top-form .back-button-mem {
+.top-form .next-button,
+.top-form .back-button-mem {
     cursor: pointer;
     font-size: 4vh;
     font-family: JosefinRegular;
@@ -529,7 +548,8 @@ a {
     grid-template-columns: 70% 30%;
 }
 
-#member-1 .top-form, #member-2 .top-form {
+#member-1 .top-form,
+#member-2 .top-form {
     display: grid;
     grid-template-columns: 50% 25% 25% !important;
 }
@@ -559,6 +579,7 @@ a {
         top: 10px;
         left: -20px;
     }
+
     100% {
         top: 25px;
         width: 350px;

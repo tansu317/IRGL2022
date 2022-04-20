@@ -89,12 +89,11 @@
         <div class="content">
             Press anywhere to continue
         </div>
+        <canvas class="webgl2"></canvas>
     </div>
 
     <div class="modal" id="registrationModal">
         <div class="registration-page" id="registration">
-
-            <canvas class="webgl2"></canvas>
 
             <div class="form-container">
                 <form class="register-form" id="leader">
@@ -407,6 +406,8 @@
 
             window.init3D();
             window.animate3D();
+            window.init3D2();
+            window.animate3D2();
             changeStyleWebGl();
         });
 
